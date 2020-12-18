@@ -1,7 +1,0 @@
-{
-  "name": "p-treat",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
-}
