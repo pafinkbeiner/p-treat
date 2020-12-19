@@ -17,4 +17,4 @@ export interface Site{
         updated: Date;
         uploaded: Date;
     }
-}
+};
