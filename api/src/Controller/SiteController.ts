@@ -21,6 +21,10 @@ export const getSite = (req: Request, res: Response) => {
     });
 };
 
+export const addSiteForm = (req: Request, res: Response) => {
+    res.redirect("/index.html");
+};
+
 export const addSite = (req: Request, res: Response) => {
     if(true){
 

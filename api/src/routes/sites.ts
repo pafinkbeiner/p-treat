@@ -6,6 +6,8 @@ const router = express.Router();
 
 /* POST Sites */
 
+router.get("/add", SiteController.addSiteForm);
+
 router.post("/add", SiteController.addSite);
 
 /* GET Sites */
