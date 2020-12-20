@@ -7,13 +7,13 @@ export interface Props {
 }
  
 export interface State {
-    sites: Site[];
+    sites: Site[] | undefined;
 }
  
 class Overview extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
-        this.state = { sites: [] };
+        this.state = { sites: undefined };
     }
 
     componentDidMount() {
