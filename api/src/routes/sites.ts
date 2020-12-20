@@ -1,5 +1,6 @@
 import * as express from "express";
 import * as SiteController from "../Controller/SiteController"
+import * as StatController from "../Controller/StatController"
 
 const router = express.Router();
 
@@ -13,8 +14,12 @@ router.post("/add", SiteController.addSite);
 
 router.get("/", SiteController.allSites);
 
-router.get("/:name", SiteController.getSite)
+router.get("/byName/:name", SiteController.getSiteByName)
 
 router.get("/byCategory/:category", SiteController.getSitesByCategory);
+
+/* GET Categories */
+
+router.get("/categories", StatController.getCategories);
 
 export default router;

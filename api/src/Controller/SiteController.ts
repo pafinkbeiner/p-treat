@@ -11,7 +11,7 @@ export const allSites = (req: Request, res: Response) => {
     });
 };
 
-export const getSite = (req: Request, res: Response) => {
+export const getSiteByName = (req: Request, res: Response) => {
     const sites = Site.findOne( {name: req.params.name},(err: any, site: SiteInterface) => {
         if(err){
             res.send(err);
