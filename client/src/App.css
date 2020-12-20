@@ -1,3 +1,13 @@
-.secondary-color{
-    background-color: grey;
+.content-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: gray;
+  flex-shrink: 2;
+}
+h1 {
+  flex-basis: 100%;
+  text-align: center;
 }

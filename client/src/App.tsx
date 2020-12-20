@@ -12,9 +12,6 @@ function App() {
       <Navbar/>
       <div className="container">
 
-        {/* TODO */}
-        <div className="Row"><br/><br/><br/></div>
-
         <Router>
         <Switch>
             <Route path="/">

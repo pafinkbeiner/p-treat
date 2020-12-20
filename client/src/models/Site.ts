@@ -1,7 +1,7 @@
 export interface Site{
     name: string;
     subname: string;
-    categorie: string;
+    category: string;
     thumbs: string[];
     description: string;
     rating: {
