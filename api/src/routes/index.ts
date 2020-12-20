@@ -11,16 +11,16 @@ router.get("/", async (req, res, next) => {
 
 router.post("/login", async (req, res, next) => {
 
-  if(req.body.username == undefined) res.status(400).json({error: "Username was not provided"});
+  if(req.body.email == undefined) res.status(400).json({error: "email was not provided"});
   if(req.body.password == undefined) res.status(400).json({error: "Password was not provided"});
 
-  if(req.body.username != undefined && req.body.password != undefined){
+  if(req.body.email != undefined && req.body.password != undefined){
 
-    const result = await AuthHandler.login(req.body.username, req.body.password)
+    const result = await AuthHandler.login(req.body.email, req.body.password)
 
     if(result != undefined){
       res.json(result);
-      console.log(`info that login of ${req.body.username} was performed successfully!`);
+      console.log(`info that login of ${req.body.email} was performed successfully!`);
     }else{
       res.status(400).json({error: "Login was not successfull"});
     }
@@ -57,7 +57,7 @@ router.get("/decodeJWT", async(req, res, next) => {
 
       const token = bearer.split(" ")[1];
 
-      jwt.verify(token, "secret", (err:any, authData: any) => {;
+      jwt.verify(token, process.env.JWT_SECRET || "", (err:any, authData: any) => {;
           if(err){
               res.status(400).json({error: "Verification was not successfull"});
           }else{

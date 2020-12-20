@@ -2,6 +2,7 @@ import { Mongoose } from "mongoose";
 import mongoose from "mongoose"
 
 export default (db: string) => {
+  console.log("Try to connect to Database...");
   const connect = () => {
     mongoose
       .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })

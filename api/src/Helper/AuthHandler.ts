@@ -93,14 +93,16 @@ export async function login(email: string, password:string){
 
     try{
         user = await User.findOne({ email });
+        console.log("Login...found user "+user);
     }catch{
         user = undefined;
     }
 
-    if(user != undefined){
+    if(user != undefined && user != null){
 
         if(bcrypt.compareSync(password, user.password)){
-            return {key: jwt.sign(user, process.env.JWT_SECRET||"" )};
+            console.log("Authentication successfull"+ user);
+            return {key: jwt.sign(user.toJSON(), process.env.JWT_SECRET||"" )};
         }
 
     }else{
@@ -108,14 +110,14 @@ export async function login(email: string, password:string){
     }
 }
 
-export async function register(username: string, password:string, mail:string){
+export async function register(username: string, password:string, email:string){
 
-    console.log(`info that user with email: ${mail} tried to register`);
+    console.log(`info that user with email: ${email} tried to register`);
 
     let found: boolean;
 
     try{
-        if(await User.findOne({mail}))
+        if(await User.findOne({email}))
             { found = true; 
         }else{
             found = false;
@@ -128,11 +130,11 @@ export async function register(username: string, password:string, mail:string){
 
     const user: UserInterface = new User({
         username: username,
-        email: mail, 
+        email: email, 
         password: bcrypt.hashSync(password, 5),
     });
 
     user.save()
-    .then( (result) => {return login(mail, password)})
+    .then( (result) => {return login(result.email, result.password)})
     .catch( (err) => {return undefined});
 }
