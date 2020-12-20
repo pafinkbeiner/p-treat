@@ -4,6 +4,7 @@ import Footer from './components/Footer/Footer';
 import Navbar from './components/Navbar/Navbar';
 import Overview from './pages/Overview';
 import './App.css'
+import Site from './pages/Site';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         <Switch>
             <Route path="/">
               <Overview />
+            </Route>
+            <Route path="/:name">
+              <Site></Site>
             </Route>
           </Switch>
         </Router>

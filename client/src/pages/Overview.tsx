@@ -20,7 +20,7 @@ class Overview extends React.Component<Props, State> {
         
         Axios.get<Site[]>(`${process.env.REACT_APP_API_URL}/sites`)
         .then(res =>  this.setState({sites: res.data}))
-        .catch( err => console.log("(Overview.tsx) Error while fetching all Sites..."));
+        .catch( err => console.log("(Overview.tsx) Error while fetching all Sites...", err));
 
     }
     
@@ -29,7 +29,26 @@ class Overview extends React.Component<Props, State> {
             <>
                 {/* Enabled on Mobile */}
                 <div className="row hide-on-large-only">
-                    <div className="col s12">This div is 12-columns wide on all screen sizes</div>
+                {  
+                        this.state.sites && this.state.sites.map((site: Site) => {
+                            return ( <div key={site.name} className="col s12">
+                                        <div className="col">
+                                        <div className="card">
+                                            <div className="card-image">
+                                            <img src={site.thumbs[0]} alt=""/>
+                                            <span className="card-title">{site.name}</span>
+                                            </div>
+                                            <div className="card-content">
+                                            <p>{site.description}</p>
+                                            </div>
+                                            <div className="card-action">
+                                            <a href={site.name}>Link</a>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div> )
+                        })
+                    }
                 </div>
 
                 {/* Enabled on Desktop */}
@@ -54,9 +73,6 @@ class Overview extends React.Component<Props, State> {
                                     </div> )
                         })
                     }
-                    <div className="col s3">6-columns (one-half)</div>
-                    <div className="col s3">6-columns (one-half)</div>
-                    <div className="col s3">6-columns (one-half)</div>
                 </div>
             </>
         );
