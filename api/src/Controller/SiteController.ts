@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import Site, { SiteInterface } from "../models/Site";
 
 export const allSites = (req: Request, res: Response) => {
-    const sites = Site.find( (err: any, sites: SiteInterface[]) => {
+    const site = Site.find( (err: any, sites: SiteInterface[]) => {
         if(err){
             res.send(err);
         }else{
@@ -22,11 +22,11 @@ export const getSite = (req: Request, res: Response) => {
 };
 
 export const getSitesByCategory = (req: Request, res: Response) => {
-    const sites = Site.findOne( {category: req.params.category},(err: any, site: SiteInterface) => {
+    const sites = Site.findOne( {category: req.params.category},(err: any, sites: SiteInterface[]) => {
         if(err){
             res.send(err);
         }else{
-            res.send(site);
+            res.send(sites);
         }
     });
 };
