@@ -42,7 +42,7 @@ export const addSite = (req: Request, res: Response) => {
             name: req.body.name,
             subname: req.body.subname,
             category: req.body.category,
-            thumbs: req.body.thumbs,
+            thumbs: [req.body.thumbs],
             description: req.body.description,
             score: req.body.score,
             keywords: req.body.keywords,
