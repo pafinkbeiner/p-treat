@@ -89,19 +89,12 @@ export async function login(email: string, password:string){
 
     console.log(`info that user with email: ${email} tried to login`);
 
-    let user;
+    let user = await User.findOne({ email });
 
-    try{
-        user = await User.findOne({ email });
-        console.log("Login...found user "+user);
-    }catch{
-        user = undefined;
-    }
-
-    if(user != undefined && user != null){
+    if(user != undefined){
 
         if(bcrypt.compareSync(password, user.password)){
-            console.log("Authentication successfull"+ user);
+
             return {key: jwt.sign(user.toJSON(), process.env.JWT_SECRET||"" )};
         }
 
@@ -114,17 +107,7 @@ export async function register(username: string, password:string, email:string){
 
     console.log(`info that user with email: ${email} tried to register`);
 
-    let found: boolean;
-
-    try{
-        if(await User.findOne({email}))
-            { found = true; 
-        }else{
-            found = false;
-        }
-    }catch{
-        found = false;
-    }
+    let found: boolean = await User.findOne({email}) != undefined ? true : false; 
 
     if(found) return undefined
 
@@ -134,7 +117,12 @@ export async function register(username: string, password:string, email:string){
         password: bcrypt.hashSync(password, 5),
     });
 
-    user.save()
-    .then( (result) => {return login(result.email, result.password)})
-    .catch( (err) => {return undefined});
+    const result = await user.save();
+
+    if(result != undefined){
+        return login(result.email, password);
+    }else{
+        return undefined;
+    }
+
 }

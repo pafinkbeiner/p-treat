@@ -11,9 +11,6 @@ router.get("/", async (req, res, next) => {
 
 router.post("/login", async (req, res, next) => {
 
-  if(req.body.email == undefined) res.status(400).json({error: "email was not provided"});
-  if(req.body.password == undefined) res.status(400).json({error: "Password was not provided"});
-
   if(req.body.email != undefined && req.body.password != undefined){
 
     const result = await AuthHandler.login(req.body.email, req.body.password)
@@ -25,19 +22,18 @@ router.post("/login", async (req, res, next) => {
       res.status(400).json({error: "Login was not successfull"});
     }
 
+  }else{
+    if(req.body.email == undefined) res.status(400).json({error: "email was not provided"});
+    if(req.body.password == undefined) res.status(400).json({error: "Password was not provided"});
   }
 
 });
 
 router.post("/register", async (req, res, next) => {
 
-  if(req.body.username == undefined) res.status(400).json({error: "Username was not provided"});
-  if(req.body.password == undefined) res.status(400).json({error: "Password was not provided"});
-  if(req.body.mail == undefined) res.status(400).json({error: "Mail was not provided"});
+  if(req.body.username != undefined && req.body.password != undefined && req.body.email != undefined){
 
-  if(req.body.username != undefined && req.body.password != undefined && req.body.mail != undefined){
-
-    const result = await AuthHandler.register(req.body.username, req.body.password, req.body.mail);
+    const result = await AuthHandler.register(req.body.username, req.body.password, req.body.email);
 
     if(result != undefined){
       res.json(result)
@@ -45,6 +41,10 @@ router.post("/register", async (req, res, next) => {
       res.status(400).json({error: "Register was not successfull"});
     }
 
+  }else{
+    if(req.body.username == undefined) res.status(400).json({error: "Username was not provided"});
+    if(req.body.password == undefined) res.status(400).json({error: "Password was not provided"});
+    if(req.body.email == undefined) res.status(400).json({error: "email was not provided"});
   }
 
 });
