@@ -13,8 +13,6 @@ export const getCategories = (req: Request, res: Response) => {
                 if(categories.find( item => item == site.category) == undefined) categories.push(site.category);
             })
 
-            console.log(categories);
-
             res.json(categories);
         }
     });
