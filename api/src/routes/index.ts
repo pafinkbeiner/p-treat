@@ -6,7 +6,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get("/", async (req, res, next) => {
-  res.json("SWE SHOP API");
+  res.json("pTREAT API");
 });
 
 router.post("/login", async (req, res, next) => {

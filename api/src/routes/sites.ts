@@ -22,4 +22,6 @@ router.get("/byCategory/:category", SiteController.getSitesByCategory);
 
 router.get("/categories", StatController.getCategories);
 
+router.get("/getOverviewContent", StatController.getOverviewContent);
+
 export default router;

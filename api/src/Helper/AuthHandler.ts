@@ -3,6 +3,10 @@ import bcrypt from "bcrypt"
 import User, { UserInterface }  from "../models/User"
 import { NextFunction, Request, Response } from "express";
 
+export function extractBearerToken(req: Request): string | undefined{
+    return req.headers["authorization"]?.split(" ")[1];
+}
+
 export function allowCustomer(req: Request, res: Response ,next: NextFunction){
     let bearer: any = req.headers["authorization"];
 
