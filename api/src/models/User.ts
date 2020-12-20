@@ -8,6 +8,8 @@ export interface UserInterface extends Document{
     email: string;
     lastLogin: string;
     role: number;
+    liked: string[];
+    disliked: string[];
 }
 
 const UserSchema: Schema = new Schema({
@@ -40,6 +42,16 @@ const UserSchema: Schema = new Schema({
         type: Number,
         required: false,
         default: 0
+    },
+    liked: {
+        type: Array,
+        required: false,
+        default: []
+    },
+    disliked: {
+        type: Array,
+        required: false,
+        default: []
     }
 });
 
