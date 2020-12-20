@@ -21,6 +21,16 @@ export const getSite = (req: Request, res: Response) => {
     });
 };
 
+export const getSitesByCategory = (req: Request, res: Response) => {
+    const sites = Site.findOne( {category: req.params.category},(err: any, site: SiteInterface) => {
+        if(err){
+            res.send(err);
+        }else{
+            res.send(site);
+        }
+    });
+};
+
 export const addSiteForm = (req: Request, res: Response) => {
     res.redirect("/index.html");
 };
@@ -31,7 +41,7 @@ export const addSite = (req: Request, res: Response) => {
         const site = new Site({
             name: req.body.name,
             subname: req.body.subname,
-            categorie: req.body.categorie,
+            category: req.body.category,
             thumbs: req.body.thumbs,
             description: req.body.description,
             score: req.body.score,

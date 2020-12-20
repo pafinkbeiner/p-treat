@@ -3,7 +3,7 @@ import mongoose, {Schema, Document} from "mongoose";
 export interface SiteInterface extends Document{
     name: string;
     subname: string;
-    categorie: string;
+    category: string;
     thumbs: string[];
     description: string;
     rating: {
@@ -32,7 +32,7 @@ const SiteSchema: Schema = new Schema({
         required: false,
         default: ""
     },
-    categorie: {
+    category: {
         type: String,
         required: true,
         default: "free"

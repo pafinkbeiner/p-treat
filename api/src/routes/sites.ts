@@ -1,5 +1,4 @@
 import * as express from "express";
-import Site from "../models/Site"
 import * as SiteController from "../Controller/SiteController"
 
 const router = express.Router();
@@ -15,5 +14,7 @@ router.post("/add", SiteController.addSite);
 router.get("/", SiteController.allSites);
 
 router.get("/:name", SiteController.getSite)
+
+router.get("/byCategory/:category", SiteController.getSitesByCategory);
 
 export default router;

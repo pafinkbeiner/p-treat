@@ -19,7 +19,7 @@ router.post("/login", async (req, res, next) => {
       res.json(result);
       console.log(`info that login of ${req.body.email} was performed successfully!`);
     }else{
-      res.status(400).json({error: "Login was not successfull"});
+      res.status(400).json({error: "Login Process was not successfull"});
     }
 
   }else{
@@ -38,7 +38,7 @@ router.post("/register", async (req, res, next) => {
     if(result != undefined){
       res.json(result)
     }else{
-      res.status(400).json({error: "Register was not successfull"});
+      res.status(400).json({error: "There is already a user with the provided credentials!"});
     }
 
   }else{
