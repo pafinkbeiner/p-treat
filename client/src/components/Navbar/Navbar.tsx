@@ -32,13 +32,13 @@ class Navbar extends React.Component<Props, State> {
                         <div className="col"><Link to="/" className="brand-logo">pTreat</Link></div>
                         {/* Enabled on Mobile */}
                         <ul className="right hide-on-large-only">
-                            <li><a href="badges.html"><i className="material-icons">person</i></a></li>
-                            <li><a href="mobile.html"><i className="material-icons">more_vert</i></a></li>
+                            {/* <li><a href="badges.html"><i className="material-icons">person</i></a></li>
+                            <li><a href="mobile.html"><i className="material-icons">more_vert</i></a></li> */}
                         </ul>
                         {/* Enabled on Desktop */}
                         <ul className="right hide-on-med-and-down">
-                            <li><a href="badges.html"><i className="material-icons">person</i></a></li>
-                            <li><a href="mobile.html"><i className="material-icons">more_vert</i></a></li>
+                            {/* <li><a href="badges.html"><i className="material-icons">person</i></a></li>
+                            <li><a href="mobile.html"><i className="material-icons">more_vert</i></a></li> */}
                         </ul>
 
                         <div className="fixed-action-btn">
@@ -53,24 +53,24 @@ class Navbar extends React.Component<Props, State> {
                             
                                 <div className="row">
                                     <div className="col s12">                        
-                                        <button onClick={this.toggleActionButton} className="btn-floating btn-large red">
+                                        <Link to="/kajsdlkj" className="btn-floating btn-large red">
                                             <i className="large material-icons">more_vert</i>
-                                        </button>
+                                        </Link>
                                     </div>
                                     <div className="col s12">  
-                                        <button onClick={this.toggleActionButton} className="btn-floating btn-large yellow">
+                                        <Link to="/kajsdlkj" className="btn-floating btn-large yellow">
                                             <i className="large material-icons">more_vert</i>
-                                        </button>
+                                        </Link>
                                     </div>
                                     <div className="col s12">  
-                                        <button onClick={this.toggleActionButton} className="btn-floating btn-large green">
+                                        <Link to="/kajsdlkj" className="btn-floating btn-large green">
                                             <i className="large material-icons">more_vert</i>
-                                        </button>
+                                        </Link>
                                     </div>
                                     <div className="col s12">  
-                                        <button onClick={this.toggleActionButton} className="btn-floating btn-large blue">
+                                        <Link to="/kajsdlkj" className="btn-floating btn-large blue">
                                             <i className="large material-icons">more_vert</i>
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
 
