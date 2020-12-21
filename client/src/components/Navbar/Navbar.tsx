@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import "./Navbar.css";
-
-export interface Props {}
-
-export interface State {
-    actionButton: boolean;
-    redirect: boolean;
-}
  
 const Navbar = () => {
 
+    let history = useHistory();
+
     const [actionButton, setActionButton] = useState(false)
-    const [redirect, setRedirect] = useState(false)
+    const [refresh, setRefresh] = useState(false);
 
 
     const toggleActionButton = () => {
@@ -28,12 +23,11 @@ const Navbar = () => {
     
         localStorage.removeItem("key");
     
-        setRedirect(false)
+        history.push("/");
+
+        setRefresh(true)
       };
 
-        if (redirect !== false) {
-            return <Redirect to={"/"}  />;
-          } else {
         return (  
             <nav>
                 <div className="nav-wrapper red">
@@ -71,7 +65,7 @@ const Navbar = () => {
                                         </Link>
                                     </div>
                                     <div className="col s12">  
-                                        <Link to="/kajsdlkj" className="btn-floating btn-large grey">
+                                        <Link to="/favorites" className="btn-floating btn-large grey">
                                             <i className="large material-icons">favorite</i>
                                         </Link>
                                     </div>
@@ -97,7 +91,6 @@ const Navbar = () => {
                 </div>
             </nav>
         );
-    }
 }
  
 export default Navbar;

@@ -8,8 +8,23 @@ import Category from './pages/Category/Category';
 import './App.css'
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import Favorites from './pages/Favorites/Favorites';
 
 function App() {
+
+  const view = () => {
+    return <>
+    <Navbar/>
+    <Overview/>
+  </>
+  }
+
+  const b =() => (comp: React.Component) => {
+    return <>
+      <Navbar/>
+      {comp}
+    </>
+  }
 
     return (
       <div className="App">
@@ -23,6 +38,7 @@ function App() {
                 <Route path="/category/:category" component={Category}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/register" component={Register}/>
+                <Route path="/favorites" component={Favorites}/>
               </Switch>
               </div>
           </Router>
