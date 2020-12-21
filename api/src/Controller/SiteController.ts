@@ -31,6 +31,20 @@ export const getSitesByCategory = (req: Request, res: Response) => {
     });
 };
 
+export const getSite = (req: Request, res: Response) => {
+
+    const key: string = req.params.key;
+    const value: string = req.params.value;
+
+    const sites = Site.findOne( {key : value}  ,(err: any, sites: SiteInterface[]) => {
+        if(err){
+            res.send(err);
+        }else{
+            res.send(sites);
+        }
+    });
+};
+
 export const addSiteForm = (req: Request, res: Response) => {
     res.redirect("/index.html");
 };
