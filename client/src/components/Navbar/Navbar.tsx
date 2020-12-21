@@ -48,7 +48,7 @@ class Navbar extends React.Component<Props, State> {
                     
                         {
 
-                            !this.state.actionButton &&
+                            this.state.actionButton &&
                             <div className="bottom-row">
                             
                                 <div className="row">
