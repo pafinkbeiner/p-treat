@@ -12,11 +12,9 @@ router.post("/add", SiteController.addSite);
 
 /* GET Sites */
 
-router.get("/all", SiteController.allSites);
+router.get("/", SiteController.allSites);
 
-router.get("/:property", SiteController.getSite);
-
-router.get("/byName/:name", SiteController.getSiteByName)
+router.get("/byId/:id", SiteController.getSiteById);
 
 router.get("/byCategory/:category", SiteController.getSitesByCategory);
 

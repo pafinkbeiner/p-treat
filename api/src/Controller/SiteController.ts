@@ -31,12 +31,10 @@ export const getSitesByCategory = (req: Request, res: Response) => {
     });
 };
 
-export const getSite = (req: Request, res: Response) => {
+export const getSiteById = (req: Request, res: Response) => {
 
-    const key: string = req.params.key;
-    const value: string = req.params.value;
+    const sites = Site.findOne( {_id : req.params.id}  ,(err: any, sites: SiteInterface[]) => {
 
-    const sites = Site.findOne( {key : value}  ,(err: any, sites: SiteInterface[]) => {
         if(err){
             res.send(err);
         }else{

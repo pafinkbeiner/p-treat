@@ -55,7 +55,7 @@ class Overview extends React.Component<Props, State> {
                                 <p>{site.description}</p>
                               </div>
                               <div className="card-action">
-                                <a href={site._id}>Link</a>
+                              <Link to={`/site/${site._id}`}>Link</Link>
                               </div>
                             </div>
                           </div>
@@ -105,7 +105,7 @@ class Overview extends React.Component<Props, State> {
                                     <p>{site.description}</p>
                                   </div>
                                   <div className="card-action">
-                                    <a href={site._id}>Link</a>
+                                  <Link to={`/site/${site._id}`}>Link</Link>
                                   </div>
                                 </div>
                               </div>
