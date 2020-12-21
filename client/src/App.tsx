@@ -17,8 +17,11 @@ function App() {
             <Route path="/">
               <Overview />
             </Route>
-            <Route path="/:name">
-              <Site></Site>
+            <Route path="/site/:name">
+              <Site />
+            </Route>
+            <Route path="/category/:category">
+              
             </Route>
           </Switch>
         </Router>
