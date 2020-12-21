@@ -39,13 +39,14 @@ class Overview extends React.Component<Props, State> {
           {this.state.categories &&
             this.state.categories.map((category: string) => {
               return (
-                <div className="row">
+                <div key={category} className="row">
                   <h3>{category}</h3>
                   {this.state.sites &&
-                    this.state.sites.slice(0, 3).map((site: Site) => {
-                      if (site.category === category) {
+                    this.state.sites
+                      .filter(item => item.category == category)
+                      .slice(0, 3).map((site: Site) => {
                         return (
-                          <div key={site.name} className="col s12">
+                          <div key={site._id} className="col s12">
                             <div className="card">
                               <div className="card-image">
                                 <img src={site.thumbs[0]} alt="" />
@@ -60,9 +61,6 @@ class Overview extends React.Component<Props, State> {
                             </div>
                           </div>
                         );
-                      } else {
-                        return <></>;
-                      }
                     })}
                   <div className="col s12">
                     <Link to={`/category/${category}`}>
@@ -83,8 +81,7 @@ class Overview extends React.Component<Props, State> {
           {this.state.categories &&
             this.state.categories.map((category: string) => {
               return (
-                <>
-                  <div className="row">
+                  <div key={category} className="row">
                     <div className="own">
                       <h3>{category}</h3>
                       {this.state.sites &&
@@ -93,7 +90,7 @@ class Overview extends React.Component<Props, State> {
                           .slice(0, 3)
                           .map((site: Site) => {
                             return (
-                              <div key={site.name} className="col s4">
+                              <div key={site._id} className="col s4">
                                 <div className="card small">
                                   <div className="card-image">
                                     <img src={site.thumbs[0]} alt="" />
@@ -120,7 +117,6 @@ class Overview extends React.Component<Props, State> {
                       </div>
                     </div>
                   </div>
-                </>
               );
             })}
         </div>
