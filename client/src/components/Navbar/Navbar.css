@@ -1,0 +1,7 @@
+.bottom-row{
+    position: fixed;
+    width: 90px;
+    bottom: 0px;
+    height: 345px;
+    right: 0px; 
+}
