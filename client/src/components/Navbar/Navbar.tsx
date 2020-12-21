@@ -27,7 +27,7 @@ class Navbar extends React.Component<Props, State> {
     render() { 
         return (  
             <nav>
-                <div className="nav-wrapper orange">
+                <div className="nav-wrapper red">
                     <div className="row">
                         <div className="col"><Link to="/" className="brand-logo black-text center">pTreat</Link></div>
                         {/* Enabled on Mobile */}
@@ -42,7 +42,7 @@ class Navbar extends React.Component<Props, State> {
                         </ul>
 
                         <div className="fixed-action-btn">
-                        <button onClick={this.toggleActionButton} className="btn-floating btn-large orange">
+                        <button onClick={this.toggleActionButton} className="btn-floating btn-large red">
                             <i className="large material-icons">menu</i>
                         </button>
                     
@@ -53,22 +53,22 @@ class Navbar extends React.Component<Props, State> {
                             
                                 <div className="row">
                                     <div className="col s12">                        
-                                        <Link to="/kajsdlkj" className="btn-floating btn-large red">
+                                        <Link to="/kajsdlkj" className="btn-floating btn-large grey">
                                             <i className="large material-icons">person</i>
                                         </Link>
                                     </div>
                                     <div className="col s12">  
-                                        <Link to="/kajsdlkj" className="btn-floating btn-large yellow">
+                                        <Link to="/kajsdlkj" className="btn-floating btn-large grey">
                                             <i className="large material-icons">more_vert</i>
                                         </Link>
                                     </div>
                                     <div className="col s12">  
-                                        <Link to="/kajsdlkj" className="btn-floating btn-large green">
+                                        <Link to="/kajsdlkj" className="btn-floating btn-large grey">
                                             <i className="large material-icons">more_vert</i>
                                         </Link>
                                     </div>
                                     <div className="col s12">  
-                                        <Link to="/kajsdlkj" className="btn-floating btn-large blue">
+                                        <Link to="/kajsdlkj" className="btn-floating btn-large grey">
                                             <i className="large material-icons">settings</i>
                                         </Link>
                                     </div>
