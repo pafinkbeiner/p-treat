@@ -39,7 +39,7 @@ class Overview extends React.Component<Props, State> {
           {this.state.categories &&
             this.state.categories.map((category: string) => {
               return (
-                <div className="row">
+                <div className="row" color="grey">
                   <h1>{category}</h1>
                   {this.state.sites &&
                     this.state.sites.splice(0,3).map((site: Site) => {
@@ -79,35 +79,48 @@ class Overview extends React.Component<Props, State> {
         </div>
 
         {/* Enabled on Desktop */}
-        {/* <div className="row"></div>
-        {this.state.categories && this.state.categories.map((category:string)=> {
-            this.renderSites(category).map((element) => {
-                if(typeof element === "string"){
-                    return(
-                    <h1>{element}</h1>
-                    );
-                } else {
-                    return (
-                        <div key={element.name} className="col s3">
-                          <div className="col">
-                            <div className="card">
-                              <div className="card-image">
-                                <img src={element.thumbs[0]} alt="" />
-                                <span className="card-title">{element.name}</span>
+         <div className="hide-on-med-and-down">
+          {this.state.categories &&
+            this.state.categories.map((category: string) => {
+              return (
+                <div className="row" color="grey">
+                  <h1>{category}</h1>
+                  {this.state.sites &&
+                    this.state.sites.splice(0,3).map((site: Site) => {
+                      if (site.category === category) {
+                        return (
+                          <div key={site.name} className="col s3">
+                              <div className="card">
+                                <div className="card-image">
+                                  <img src={site.thumbs[0]} alt="" />
+                                  <span className="card-title">
+                                    {site.name}
+                                  </span>
+                                </div>
+                                <div className="card-content">
+                                  <p>{site.description}</p>
+                                </div>
+                                <div className="card-action">
+                                  <a href={site.name}>Link</a>
+                                </div>
                               </div>
-                              <div className="card-content">
-                                <p>{element.description}</p>
-                              </div>
-                              <div className="card-action">
-                                <a href={site.name}>Link</a>
-                              </div>
-                            </div>
                           </div>
-                        </div>
-                      );
-                }
-            })
-        })} */}
+                        );
+                      }else {return <></>}
+                    })}
+                    <div className="col s3">
+                      <Link to={`/category/${category}`}>
+                      <div className="card">
+                      <div className="card-content">
+                        <p>{">"}</p>
+                      </div>
+                      </div>
+                      </Link>
+                    </div>
+                </div>
+              );
+            })}
+        </div>
 
       </>
     );
