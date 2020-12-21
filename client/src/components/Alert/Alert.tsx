@@ -21,7 +21,7 @@ class Alert extends React.Component<Props, State> {
     render() { 
         return (             
             <div className="alert alert-warning fixed-top" role="alert">
-            { this.props.message ? this.props.message : "An error occured while performing the operation!"}
+             <p className="red-text"> { this.props.message ? this.props.message : "An error occured while performing the operation!"}</p>
             </div>
         );
     }

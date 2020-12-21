@@ -4,7 +4,7 @@ import { Redirect, Link } from "react-router-dom";
 import Alert from "../../components/Alert/Alert";
 
 export interface Props {
-    
+    refresh: Function;
 }
  
 export interface State {
@@ -44,6 +44,7 @@ class Login extends React.Component<Props, State> {
             if (auth) {
               localStorage.setItem("key", auth.data.key);
               this.setState({ redirect: true });
+              this.props.refresh(true);
             } else {
               this.setState({
                 redirect: undefined,

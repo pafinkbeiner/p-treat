@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import "./Navbar.css";
 
@@ -9,33 +9,30 @@ export interface State {
     redirect: boolean;
 }
  
-class Navbar extends React.Component<Props, State> {
+const Navbar = () => {
 
-    constructor(props: Props) {
-        super(props);
-        this.state = { actionButton: false, redirect: false };
-    }
+    const [actionButton, setActionButton] = useState(false)
+    const [redirect, setRedirect] = useState(false)
 
 
-    toggleActionButton = () => {
-        if(this.state.actionButton){
-            this.setState({ actionButton: false });
+    const toggleActionButton = () => {
+        if(actionButton){
+            setActionButton(false);
         }else{
-            this.setState({ actionButton: true });
+            setActionButton(true);
         }
     }
 
-    onSubmit = (e: any) => {
+    const onSubmit = (e: any) => {
         e.preventDefault();
     
         localStorage.removeItem("key");
     
-        this.setState({ redirect: false });
+        setRedirect(false)
       };
 
-    render() { 
-        if (this.state.redirect !== false) {
-            return <Redirect to={"/"} />;
+        if (redirect !== false) {
+            return <Redirect to={"/"}  />;
           } else {
         return (  
             <nav>
@@ -46,25 +43,25 @@ class Navbar extends React.Component<Props, State> {
                         {
                             localStorage.getItem("key") !== undefined &&
                             <ul className="right hide-on-large-only mr-1">
-                                <li onClick={this.onSubmit}><a><i className="material-icons black-text">exit_to_app</i></a></li>
+                                <li onClick={onSubmit}><a><i className="material-icons black-text">exit_to_app</i></a></li>
                             </ul>
                         }
                         {/* Enabled on Desktop */}
                         {
                              localStorage.getItem("key") &&
                             <ul className="right hide-on-med-and-down mr-1">
-                                <li onClick={this.onSubmit}><a><i className="material-icons black-text">exit_to_app</i></a></li> 
+                                <li onClick={onSubmit}><a><i className="material-icons black-text">exit_to_app</i></a></li> 
                             </ul>
                         }
 
                         <div className="fixed-action-btn">
-                        <button onClick={this.toggleActionButton} className="btn-floating btn-large red">
+                        <button onClick={toggleActionButton} className="btn-floating btn-large red">
                             <i className="large material-icons">menu</i>
                         </button>
                     
                         {
 
-                            this.state.actionButton &&
+                            actionButton &&
                             <div className="bottom-row">
                             
                                 <div className="row">
@@ -100,7 +97,6 @@ class Navbar extends React.Component<Props, State> {
                 </div>
             </nav>
         );
-        }
     }
 }
  
