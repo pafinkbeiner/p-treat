@@ -29,7 +29,7 @@ class Navbar extends React.Component<Props, State> {
             <nav>
                 <div className="nav-wrapper orange">
                     <div className="row">
-                        <div className="col"><Link to="/" className="brand-logo">pTreat</Link></div>
+                        <div className="col"><Link to="/" className="brand-logo black-text center">pTreat</Link></div>
                         {/* Enabled on Mobile */}
                         <ul className="right hide-on-large-only">
                             {/* <li><a href="badges.html"><i className="material-icons">person</i></a></li>
