@@ -1,7 +1,7 @@
 import React from "react"
 
 export interface Props {
-    message: string;
+    message?: string;
 }
  
 export interface State {
