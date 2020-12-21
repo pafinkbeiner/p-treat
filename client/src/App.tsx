@@ -12,20 +12,6 @@ import Favorites from './pages/Favorites/Favorites';
 
 function App() {
 
-  const view = () => {
-    return <>
-    <Navbar/>
-    <Overview/>
-  </>
-  }
-
-  const b =() => (comp: React.Component) => {
-    return <>
-      <Navbar/>
-      {comp}
-    </>
-  }
-
     return (
       <div className="App">
   

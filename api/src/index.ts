@@ -4,6 +4,7 @@ import express from "express";
 import path from "path";
 import indexRouter from "./routes/index"
 import sitesRouter from "./routes/sites"
+import execRouter from "./routes/exec"
 import cors from "cors";
 const createError = require("http-errors");
 import connect from "./Helper/Database";
@@ -41,6 +42,7 @@ connect(db);
 // Configure routes
 app.use("/", indexRouter);
 app.use("/sites", sitesRouter);
+app.use("/exec", execRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => next(createError(404)));

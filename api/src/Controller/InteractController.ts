@@ -4,12 +4,10 @@ import Site, { SiteInterface } from "../models/Site";
 import User, { UserInterface } from "../models/User";
 import jwt from "jsonwebtoken"
 
-const performLike = (req: Request, res: Response) => {
+export const performLike = (req: Request, res: Response) => {
     if(req.body.siteId != undefined){
 
         let token = extractBearerToken(req);
-
-        console.log("Extracted Token: "+token);
 
         if(token){
 
@@ -54,3 +52,4 @@ const performLike = (req: Request, res: Response) => {
         if(req.body.siteId == undefined) res.json({error: "Site Id was not provided!"});
     }
 }
+

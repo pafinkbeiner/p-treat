@@ -1,24 +1,55 @@
 import React from "react"
+import axios from "axios"
+import { Site } from "../../models/Site";
+import { User } from "../../models/User";
 
 export interface Props {
     
 }
  
 export interface State {
-    
+    favorites: Site[];
 }
  
-class Favorites extends React.Component<Props, State> {
+class Favorites extends React.Component<Props, any> {
     constructor(props: Props) {
         super(props);
-        this.state = {  };
+        this.state = { favorites: [] };
     }
+
+    async componentDidMount(){
+
+        const res: User = await (await axios.get<User>(`${process.env.REACT_APP_API_URL}/decodeJWT`, {headers: { Authorization: `Bearer ${localStorage.getItem("key")}` }})).data;
+        
+        res.liked.map((like: string) => {
+
+            axios.get<Site>(`${process.env.REACT_APP_API_URL}/sites/byId/${like}`).then(site => {
+
+                this.setState((state:State) => {
+                    return{
+                        favorites: [...state.favorites, site.data]
+                    }
+                    
+                });
+
+            });
+
+        })
+        
+    }
+
     render() { 
 
         if(localStorage.getItem("key")){
             return ( 
                 <>
-                <h1>Fav</h1>
+                    <div className="row">
+                        {
+                            this.state.favorites.map((fav: Site) => {
+                                return <h1>{fav.name}</h1>
+                            })
+                        }
+                    </div>
                 </>
              );
         }else{
