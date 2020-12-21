@@ -1,5 +1,6 @@
 import Axios from "axios";
 import React from "react";
+import { Link } from "react-router-dom";
 import { Site } from "../models/Site";
 import "./Overview.css";
 
@@ -63,6 +64,15 @@ class Overview extends React.Component<Props, State> {
                         );
                       }
                     })}
+                    <div className="col s12">
+                      <Link to={`/category/${category}`}>
+                      <div className="card">
+                      <div className="card-content">
+                        <p>{">"}</p>
+                      </div>
+                      </div>
+                      </Link>
+                    </div>
                 </div>
               );
             })}
