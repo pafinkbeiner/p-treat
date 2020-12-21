@@ -83,31 +83,44 @@ class Overview extends React.Component<Props, State> {
           {this.state.categories &&
             this.state.categories.map((category: string) => {
               return (
-                <div className="row grey">
-                  <h1>{category}</h1>
-                  {this.state.sites &&
-                    this.state.sites
-                      .filter((item) => item.category === category)
-                      .slice(0, 3)
-                      .map((site: Site) => {
-                        return (
-                          <div key={site.name} className="col s4">
-                            <div className="card small">
-                              <div className="card-image">
-                                <img src={site.thumbs[0]} alt="" />
-                                <span className="card-title">{site.name}</span>
+                <>
+                  <div className="row grey">
+                    <div className="own">
+                      <h1>{category}</h1>
+                      {this.state.sites &&
+                        this.state.sites
+                          .filter((item) => item.category === category)
+                          .slice(0, 3)
+                          .map((site: Site) => {
+                            return (
+                              <div key={site.name} className="col s4">
+                                <div className="card small">
+                                  <div className="card-image">
+                                    <img src={site.thumbs[0]} alt="" />
+                                    <span className="card-title">
+                                      {site.name}
+                                    </span>
+                                  </div>
+                                  <div className="card-content">
+                                    <p>{site.description}</p>
+                                  </div>
+                                  <div className="card-action">
+                                    <a href={site.name}>Link</a>
+                                  </div>
+                                </div>
                               </div>
-                              <div className="card-content">
-                                <p>{site.description}</p>
-                              </div>
-                              <div className="card-action">
-                                <a href={site.name}>Link</a>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
-                </div>
+                            );
+                          })}
+                      <div className="col hover-arrow">
+                        <Link to={`/category/${category}`}>
+                          <i className="large material-icons white-text">
+                            chevron_right
+                          </i>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </>
               );
             })}
         </div>
