@@ -62,7 +62,7 @@ class Overview extends React.Component<Props, State> {
                               </div>
                           </div>
                         );
-                      }
+                      }else {return <></>}
                     })}
                     <div className="col s12">
                       <Link to={`/category/${category}`}>

@@ -5,28 +5,30 @@ import Navbar from './components/Navbar/Navbar';
 import Overview from './pages/Overview';
 import './App.css'
 import Site from './pages/Site';
+import Category from './pages/Category/Category';
 
 function App() {
   return (
-    <div className="App secondary-color">
-      <Navbar/>
-      <div className="container">
+    <div className="App">
 
         <Router>
-        <Switch>
-            <Route path="/">
-              <Overview />
-            </Route>
-            <Route path="/site/:name">
-              <Site />
-            </Route>
-            <Route path="/category/:category">
-              
-            </Route>
-          </Switch>
+        <Navbar/>
+          <div className="container">
+          <Switch>
+              <Route exact path="/">
+                <Overview />
+              </Route>
+              <Route path="/site/:name">
+                <Site />
+              </Route>
+              <Route path="/category/:category">
+                <Category />
+              </Route>
+            </Switch>
+            </div>
         </Router>
 
-      </div>
+
       <Footer/>
     </div>
   );
