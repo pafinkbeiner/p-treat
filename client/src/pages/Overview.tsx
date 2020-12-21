@@ -42,84 +42,75 @@ class Overview extends React.Component<Props, State> {
                 <div className="row" color="grey">
                   <h1>{category}</h1>
                   {this.state.sites &&
-                    this.state.sites.slice(0,3).map((site: Site) => {
+                    this.state.sites.slice(0, 3).map((site: Site) => {
                       if (site.category === category) {
                         return (
                           <div key={site.name} className="col s12">
-                              <div className="card">
-                                <div className="card-image">
-                                  <img src={site.thumbs[0]} alt="" />
-                                  <span className="card-title">
-                                    {site.name}
-                                  </span>
-                                </div>
-                                <div className="card-content">
-                                  <p>{site.description}</p>
-                                </div>
-                                <div className="card-action">
-                                  <a href={site.name}>Link</a>
-                                </div>
+                            <div className="card">
+                              <div className="card-image">
+                                <img src={site.thumbs[0]} alt="" />
+                                <span className="card-title">{site.name}</span>
                               </div>
+                              <div className="card-content">
+                                <p>{site.description}</p>
+                              </div>
+                              <div className="card-action">
+                                <a href={site.name}>Link</a>
+                              </div>
+                            </div>
                           </div>
                         );
-                      }else {return <></>}
+                      } else {
+                        return <></>;
+                      }
                     })}
-                    <div className="col s12">
-                      <Link to={`/category/${category}`}>
+                  <div className="col s12">
+                    <Link to={`/category/${category}`}>
                       <div className="card">
-                      <div className="card-content">
-                        <p>{">"}</p>
+                        <div className="card-content">
+                          <p>{">"}</p>
+                        </div>
                       </div>
-                      </div>
-                      </Link>
-                    </div>
+                    </Link>
+                  </div>
                 </div>
               );
             })}
         </div>
 
         {/* Enabled on Desktop */}
-         <div className="hide-on-med-and-down">
+        <div className="hide-on-med-and-down">
           {this.state.categories &&
             this.state.categories.map((category: string) => {
               return (
                 <div className="row grey">
                   <h1>{category}</h1>
                   {this.state.sites &&
-                    this.state.sites.filter(item => item.category == category).slice(0,3).map((site: Site) => {
+                    this.state.sites
+                      .filter((item) => item.category === category)
+                      .slice(0, 3)
+                      .map((site: Site) => {
                         return (
-                          <div key={site.name} className="col s3">
-                              <div className="card">
-                                <div className="card-image">
-                                  <img src={site.thumbs[0]} alt="" />
-                                  <span className="card-title">
-                                    {site.name}
-                                  </span>
-                                </div>
-                                <div className="card-content">
-                                  <p>{site.description}</p>
-                                </div>
-                                <div className="card-action">
-                                  <a href={site.name}>Link</a>
-                                </div>
+                          <div key={site.name} className="col s4">
+                            <div className="card small">
+                              <div className="card-image">
+                                <img src={site.thumbs[0]} alt="" />
+                                <span className="card-title">{site.name}</span>
                               </div>
+                              <div className="card-content">
+                                <p>{site.description}</p>
+                              </div>
+                              <div className="card-action">
+                                <a href={site.name}>Link</a>
+                              </div>
+                            </div>
                           </div>
                         );
-                    })}
-                    <div className="col s3">
-                      <Link to={`/category/${category}`}>
-                      <div className="card">
-                      <div className="card-content">
-                        <p>{">"}</p>
-                      </div>
-                      </div>
-                      </Link>
-                    </div>
+                      })}
                 </div>
               );
             })}
         </div>
-
       </>
     );
   }
