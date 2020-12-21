@@ -40,7 +40,7 @@ class Register extends React.Component<Props, State> {
           .post(`${process.env.REACT_APP_API_URL}/register`, {
             username: this.state.username,
             password: this.state.password,
-            mail: this.state.mail,
+            email: this.state.mail,
           })
           .then((auth) => {
             if (auth) {
@@ -60,7 +60,7 @@ class Register extends React.Component<Props, State> {
       };
     render() {
         if (this.state.redirect) {
-          return <Redirect to={"/items"} />;
+          return <Redirect to={"/"} />;
         } else {
           return (
             <div className="background">

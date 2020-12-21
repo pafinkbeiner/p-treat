@@ -8,7 +8,7 @@ export interface Props {
 }
  
 export interface State {
-    username: string,
+    email: string,
     password: string,
     err: boolean,
     redirect: boolean | undefined;
@@ -18,7 +18,7 @@ class Login extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            username: "",
+            email: "",
             password: "",
             err: false,
             redirect: undefined
@@ -29,7 +29,7 @@ class Login extends React.Component<Props, State> {
     }
 
     canLogin() {
-        return this.state.username.length === 0 || this.state.password.length === 0;
+        return this.state.email.length === 0 || this.state.password.length === 0;
       }
     
       onSubmit = (e: any) => {
@@ -37,7 +37,7 @@ class Login extends React.Component<Props, State> {
     
         axios
           .post(`${process.env.REACT_APP_API_URL}/login`, {
-            username: this.state.username,
+            email: this.state.email,
             password: this.state.password,
           })
           .then((auth) => {
@@ -47,7 +47,7 @@ class Login extends React.Component<Props, State> {
             } else {
               this.setState({
                 redirect: undefined,
-                username: "",
+                email: "",
                 password: "",
               });
             }
@@ -59,7 +59,7 @@ class Login extends React.Component<Props, State> {
 
       render() {
         if (this.state.redirect) {
-          return <Redirect to={"/items"} />;
+          return <Redirect to={"/"} />;
         } else {
           return (
             <div className="background">
@@ -72,12 +72,12 @@ class Login extends React.Component<Props, State> {
                   <h1 className="mb-3">Login</h1>
                   <div className="input-group mb-3">
                     <input
-                      type="text"
-                      value={this.state.username}
-                      placeholder="Username"
-                      onChange={(e) => this.setState({ username: e.target.value })}
+                      type="email"
+                      value={this.state.email}
+                      placeholder="Email"
+                      onChange={(e) => this.setState({ email: e.target.value })}
                       className="form-control"
-                      aria-label="Username"
+                      aria-label="Email"
                       aria-describedby="basic-addon1"
                     />
                   </div>
@@ -97,7 +97,7 @@ class Login extends React.Component<Props, State> {
                   <input className="btn btn-primary" value="Login" type="submit"></input>
                 </form>
               </div>
-              { this.state.err && <Alert message="Falsche Daten!"/>}
+              { this.state.err && <Alert message="Error occured while performing login"/>}
             </div>
           );
         }

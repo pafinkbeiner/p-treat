@@ -43,7 +43,7 @@ class Overview extends React.Component<Props, State> {
                   <h3>{category}</h3>
                   {this.state.sites &&
                     this.state.sites
-                      .filter(item => item.category == category)
+                      .filter(item => item.category === category)
                       .slice(0, 3).map((site: Site) => {
                         return (
                           <div key={site._id} className="col s12">
