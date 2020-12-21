@@ -86,7 +86,7 @@ class Overview extends React.Component<Props, State> {
                 <div className="row grey">
                   <h1>{category}</h1>
                   {this.state.sites &&
-                    this.state.sites.slice(0,3).map((site: Site) => {
+                    this.state.sites.find(item => item.category == category).slice(0,3).map((site: Site) => {
                       if (site.category === category) {
                         return (
                           <div key={site.name} className="col s3">
