@@ -8,7 +8,7 @@ class Navbar extends React.Component {
             <nav>
                 <div className="nav-wrapper orange">
                     <div className="row">
-                        <div className="col"><a href="/" className="brand-logo">pTreat</a></div>
+                        <div className="col"><Link to="/" className="brand-logo">pTreat</Link></div>
                         {/* Enabled on Mobile */}
                         <ul className="right hide-on-large-only">
                             <li><a href="mobile.html"><i className="material-icons">more_vert</i></a></li>
