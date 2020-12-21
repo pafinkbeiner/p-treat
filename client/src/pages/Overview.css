@@ -1,37 +1,26 @@
-    .arrow{
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        transition: 0.5s;
-        border-radius: 4px;
-        background-color: #5ca1e1;
-        border: none;
-        color: #fff;
-        text-align: center;
-        font-size: 32px;
-        padding: 16px;
-        width: 220px;
-        transition: all 0.5s;
-        cursor: pointer;
-        margin: 36px;
-        box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
-    }
+.own:after {
+  position: absolute;
+  opacity: 0;
+  right: -20px;
+  transition: 0.5s;
+}
 
-    .arrow:after {
-        content: '»';
-        position: absolute;
-        opacity: 0;  
-        top: 14px;
-        right: -20px;
-        transition: 0.5s;
-      }
-      
-      .arrow:hover{
-        padding-right: 24px;
-        padding-left:8px;
-      }
-      
-      .arrow:hover:after {
-        opacity: 1;
-        right: 10px;
-      }
+.own:hover {
+  padding-right: 3rem;
+}
+
+.own:hover:after {
+  opacity: 1;
+  right: 1rem;
+}
+
+.own .hover-arrow {
+  display: none;
+}
+
+.own:hover .hover-arrow {
+  display: inline;
+  position: absolute;
+  margin-left: -2.75rem;
+  margin-top: 6%;
+}
