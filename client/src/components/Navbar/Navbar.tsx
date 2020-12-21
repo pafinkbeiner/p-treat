@@ -43,18 +43,18 @@ class Navbar extends React.Component<Props, State> {
 
                         <div className="fixed-action-btn">
                         <button onClick={this.toggleActionButton} className="btn-floating btn-large orange">
-                            <i className="large material-icons">more_vert</i>
+                            <i className="large material-icons">menu</i>
                         </button>
                     
                         {
 
-                            this.state.actionButton &&
+                            !this.state.actionButton &&
                             <div className="bottom-row">
                             
                                 <div className="row">
                                     <div className="col s12">                        
                                         <Link to="/kajsdlkj" className="btn-floating btn-large red">
-                                            <i className="large material-icons">more_vert</i>
+                                            <i className="large material-icons">person</i>
                                         </Link>
                                     </div>
                                     <div className="col s12">  
@@ -69,7 +69,7 @@ class Navbar extends React.Component<Props, State> {
                                     </div>
                                     <div className="col s12">  
                                         <Link to="/kajsdlkj" className="btn-floating btn-large blue">
-                                            <i className="large material-icons">more_vert</i>
+                                            <i className="large material-icons">settings</i>
                                         </Link>
                                     </div>
                                 </div>
