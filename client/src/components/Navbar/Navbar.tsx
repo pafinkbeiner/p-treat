@@ -71,7 +71,7 @@ class Navbar extends React.Component<Props, State> {
                             
                                 <div className="row">
                                     <div className="col s12">                        
-                                        <Link to="/kajsdlkj" className="btn-floating btn-large grey">
+                                        <Link to="/login" className="btn-floating btn-large grey">
                                             <i className="large material-icons">person</i>
                                         </Link>
                                     </div>

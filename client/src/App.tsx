@@ -6,6 +6,8 @@ import Overview from './pages/Overview';
 import SelectedSite from './pages/SelectedSite';
 import Category from './pages/Category/Category';
 import './App.css'
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
               <Route exact path="/" component={Overview}/>
               <Route path="/site/:id" component={SelectedSite}/>
               <Route path="/category/:category" component={Category}/>
+              <Route path="/login" component={Login}/>
+              <Route path="/register" component={Register}/>
             </Switch>
             </div>
         </Router>
