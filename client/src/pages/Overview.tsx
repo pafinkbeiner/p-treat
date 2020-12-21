@@ -39,7 +39,7 @@ class Overview extends React.Component<Props, State> {
           {this.state.categories &&
             this.state.categories.map((category: string) => {
               return (
-                <div className="row" color="grey">
+                <div className="row">
                   <h1>{category}</h1>
                   {this.state.sites &&
                     this.state.sites.slice(0, 3).map((site: Site) => {
@@ -84,7 +84,7 @@ class Overview extends React.Component<Props, State> {
             this.state.categories.map((category: string) => {
               return (
                 <>
-                  <div className="row grey">
+                  <div className="row">
                     <div className="own">
                       <h1>{category}</h1>
                       {this.state.sites &&
