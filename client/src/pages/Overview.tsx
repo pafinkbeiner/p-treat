@@ -41,11 +41,10 @@ class Overview extends React.Component<Props, State> {
                 <div className="row">
                   <h1>{category}</h1>
                   {this.state.sites &&
-                    this.state.sites.map((site: Site) => {
+                    this.state.sites.slice(0,3).map((site: Site) => {
                       if (site.category === category) {
                         return (
                           <div key={site.name} className="col s12">
-                            <div className="col">
                               <div className="card">
                                 <div className="card-image">
                                   <img src={site.thumbs[0]} alt="" />
@@ -60,7 +59,6 @@ class Overview extends React.Component<Props, State> {
                                   <a href={site.name}>Link</a>
                                 </div>
                               </div>
-                            </div>
                           </div>
                         );
                       }
@@ -71,7 +69,7 @@ class Overview extends React.Component<Props, State> {
         </div>
 
         {/* Enabled on Desktop */}
-        <div className="row"></div>
+        {/* <div className="row"></div>
         {this.state.categories && this.state.categories.map((category:string)=> {
             this.renderSites(category).map((element) => {
                 if(typeof element === "string"){
@@ -99,7 +97,8 @@ class Overview extends React.Component<Props, State> {
                       );
                 }
             })
-        })}
+        })} */}
+
       </>
     );
   }
