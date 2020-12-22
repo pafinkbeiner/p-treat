@@ -13,6 +13,7 @@ import { Provider } from "react-redux"
 import store from "./redux/store"
 import Share from './pages/Share/Share';
 import Settings from './pages/Settings/Settings';
+import AddSite from './pages/AddSite/AddSite';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
                   <Route path="/favorites" component={Favorites}/>
                   <Route path="/share" component={Share}/>
                   <Route path="/settings" component={Settings}/>
+                  <Route path="/addSite" component={AddSite} /> 
                 </Switch>
                 </div>
             </Router>
