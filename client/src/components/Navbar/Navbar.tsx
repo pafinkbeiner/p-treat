@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import {connect} from "react-redux"
 import "./Navbar.css";
+import { setActionButton } from "../../redux/actions/frontActions"
  
-const Navbar = () => {
+const Navbar = (props:any) => {
 
     let history = useHistory();
 
-    const [actionButton, setActionButton] = useState(false)
-    const [refresh, setRefresh] = useState(false);
-
-
     const toggleActionButton = () => {
-        if(actionButton){
-            setActionButton(false);
+        console.log(props);
+        if(props.front.actionButtonOpen){
+            props.setActionButton(false);
         }else{
-            setActionButton(true);
+            props.setActionButton(true);
         }
     }
 
@@ -22,8 +21,6 @@ const Navbar = () => {
         e.preventDefault();
     
         localStorage.removeItem("key");
-    
-        setRefresh(true)
 
         history.push("/");
       };
@@ -55,7 +52,7 @@ const Navbar = () => {
                     
                         {
 
-                            actionButton &&
+                            props.front.actionButtonOpen &&
                             <div className="bottom-row">
                             
                                 <div className="row">
@@ -105,5 +102,13 @@ const Navbar = () => {
             </nav>
         );
 }
+
+const mapStateToProps = (state:any) => ({
+    front: state.front
+});
+
+const mapDispatchToProps = {
+    setActionButton: setActionButton
+}
  
-export default Navbar;
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
