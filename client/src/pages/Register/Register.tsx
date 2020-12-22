@@ -34,6 +34,8 @@ class Register extends React.Component<any, State> {
     
       onSubmit = (e:any) => {
         e.preventDefault();
+
+        this.props.setLoading(true);
     
         axios
           .post(`${process.env.REACT_APP_API_URL}/register`, {
@@ -47,7 +49,6 @@ class Register extends React.Component<any, State> {
               this.setState({ redirect: true });
 
               //Redux front changes
-              this.props.setLoading(true);
               this.props.setActionButton(false);
 
             } else {
@@ -56,10 +57,12 @@ class Register extends React.Component<any, State> {
                 username: "",
                 password: "",
               });
+              this.props.setLoading(false);
             }
           })
           .catch((err) => {
             this.setState({err: true})
+            this.props.setLoading(false);
           });
       };
     render() {

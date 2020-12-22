@@ -35,6 +35,14 @@ const Navbar = (props:any) => {
                 <div className="nav-wrapper red">
                     <div className="row">
                         <div className="col"><Link to="/" className="brand-logo black-text center">pTreat {props.front.loading && <> - LOADING</>}</Link></div>
+
+                        {
+                            props.front.loading && 
+                            <div className="progress black">
+                                <div className="indeterminate red"></div>
+                            </div>
+                        }
+
                         {/* Enabled on Mobile */}
                         {
                             localStorage.getItem("key") !== undefined &&
