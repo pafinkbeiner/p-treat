@@ -23,8 +23,8 @@ class Login extends React.Component<any, State> {
             redirect: undefined
           };
 
-          this.onSubmit = this.onSubmit.bind(this);
-          this.canLogin = this.canLogin.bind(this)
+        this.onSubmit = this.onSubmit.bind(this);
+        this.canLogin = this.canLogin.bind(this)
     }
 
     canLogin() {
@@ -34,6 +34,8 @@ class Login extends React.Component<any, State> {
       onSubmit = (e: any) => {
         e.preventDefault();
     
+        this.props.setLoading(true);
+
         axios
           .post(`${process.env.REACT_APP_API_URL}/login`, {
             email: this.state.email,
@@ -45,7 +47,6 @@ class Login extends React.Component<any, State> {
               this.setState({ redirect: true });
 
               //Redux front changes
-              this.props.setLoading(true);
               this.props.setActionButton(false);
 
             } else {
@@ -54,10 +55,12 @@ class Login extends React.Component<any, State> {
                 email: "",
                 password: "",
               });
+              this.props.setActionButton(false);
             }
           })
           .catch((err) => {
             this.setState({err: true})
+            this.props.setActionButton(false);
           });
       };
 

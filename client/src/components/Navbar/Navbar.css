@@ -5,3 +5,8 @@
     height: 345px;
     right: 0px; 
 }
+
+.progress{
+    position: absolute;
+    top: -3px;
+}
