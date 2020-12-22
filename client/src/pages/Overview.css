@@ -25,7 +25,8 @@
   margin-top: 6%;
 }
 
-/* Custom Card */
+/*--------------------Custom Card--------------------*/
+
 .custom-card{
   position: relative;
   border-radius: 5px;
@@ -89,3 +90,5 @@
   right: 11px;
   bottom: 4px;
 }
+
+/*--------------------Custom Card End--------------------*/
