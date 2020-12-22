@@ -85,12 +85,12 @@ const Navbar = (props:any) => {
                                         </Link>
                                     </div>
                                     <div className="col s12">  
-                                        <Link to="/kajsdlkj" className="btn-floating btn-large grey">
+                                        <Link to="/share" className="btn-floating btn-large grey">
                                             <i className="large material-icons">share</i>
                                         </Link>
                                     </div>
                                     <div className="col s12">  
-                                        <Link to="/kajsdlkj" className="btn-floating btn-large grey">
+                                        <Link to="/settings" className="btn-floating btn-large grey">
                                             <i className="large material-icons">settings</i>
                                         </Link>
                                     </div>

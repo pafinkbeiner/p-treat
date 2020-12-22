@@ -11,6 +11,8 @@ import Register from './pages/Register/Register';
 import Favorites from './pages/Favorites/Favorites';
 import { Provider } from "react-redux"
 import store from "./redux/store"
+import Share from './pages/Share/Share';
+import Settings from './pages/Settings/Settings';
 
 function App() {
 
@@ -28,6 +30,8 @@ function App() {
                   <Route path="/login" component={Login}/>
                   <Route path="/register" component={Register}/>
                   <Route path="/favorites" component={Favorites}/>
+                  <Route path="/share" component={Share}/>
+                  <Route path="/settings" component={Settings}/>
                 </Switch>
                 </div>
             </Router>
