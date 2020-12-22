@@ -116,7 +116,7 @@ class Overview extends React.Component<Props, State> {
                             );
                           })}
                           
-                      <div className="col hover-arrow">
+                      <div className="hover-arrow">
                         <Link to={`/category/${category}`}>
                           <i className="large material-icons white-text">
                             chevron_right
