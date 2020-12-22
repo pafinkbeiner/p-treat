@@ -105,7 +105,7 @@ class Overview extends React.Component<Props, State> {
                                   </h3>
         
                                   <i className=" custom-card-rating-thumb material-icons red-text">thumb_up</i>
-                                  <p className=" custom-card-rating-text red-text">90%</p>
+                                  <p className=" custom-card-rating-text red-text">{site.score+"%"}</p>
         
                                   <Link to="/" className="custom-card-href">
                                     <i className="material-icons red-text">send</i>
