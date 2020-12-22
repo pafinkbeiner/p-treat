@@ -84,6 +84,16 @@ class Overview extends React.Component<Props, State> {
                   <div key={category} className="row">
                     <div className="own">
                       <h3>{category}</h3>
+                      <div className="col s4">
+                        <div className="custom-card">
+                          <div className="custom-card-image">
+     
+                          </div>
+                          <h3 className="custom-card-title">
+                                Title
+                            </h3>
+                        </div>
+                      </div>
                       {this.state.sites &&
                         this.state.sites
                           .filter((item) => item.category === category)
@@ -108,6 +118,7 @@ class Overview extends React.Component<Props, State> {
                               </div>
                             );
                           })}
+                          
                       <div className="col hover-arrow">
                         <Link to={`/category/${category}`}>
                           <i className="large material-icons white-text">

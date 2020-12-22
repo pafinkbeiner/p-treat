@@ -24,3 +24,38 @@
   margin-left: -2.75rem;
   margin-top: 6%;
 }
+
+/* Custom Card */
+.custom-card{
+  position: relative;
+  border-radius: 5px;
+  height: 200px;
+  width: auto;
+  padding: 7px;
+  border: 2px solid rgb(192, 10, 10);
+}
+
+.custom-card .custom-card-image{
+  background-color: aliceblue;
+  border-radius: 5px;
+  width: 100%;
+  height: 85%;
+  transition: all 0.7s;
+}
+
+.custom-card .custom-card-image:hover{
+  background-color: black;
+  transform:rotateY(90deg);
+}
+
+.custom-card:hover{
+  background-color: rgb(192, 10, 10);
+}
+
+.custom-card .custom-card-title{
+  position: absolute;
+  color: black;
+  font-size: 27px;
+  bottom: 2rem;
+  left: 1rem;
+}
