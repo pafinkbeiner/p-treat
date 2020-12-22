@@ -1,3 +1,6 @@
 import {combineReducers} from "redux"
+import frontReducer from "./frontReducer"
 
-export default combineReducers({});
+export default combineReducers({
+    front: frontReducer
+});
