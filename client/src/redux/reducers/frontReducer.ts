@@ -20,7 +20,6 @@ export default (state:any = initalState, action:any) => {
             error: action.payload
         } 
         case SET_ACTION_BTN: 
-        console.log("Triggered Action",action.payload)
         return{
             ...state,
             actionButtonOpen: action.payload

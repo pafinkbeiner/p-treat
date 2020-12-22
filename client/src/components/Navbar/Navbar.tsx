@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import {connect} from "react-redux"
 import "./Navbar.css";
-import { setActionButton } from "../../redux/actions/frontActions"
+import { setActionButton, setLoading } from "../../redux/actions/frontActions"
  
 const Navbar = (props:any) => {
 
     let history = useHistory();
 
+    useEffect(() => {
+        if(props.front.loading) props.setLoading(false);
+    }, [props.front.loading])
+
     const toggleActionButton = () => {
-        console.log(props);
         if(props.front.actionButtonOpen){
             props.setActionButton(false);
         }else{
@@ -22,6 +25,8 @@ const Navbar = (props:any) => {
     
         localStorage.removeItem("key");
 
+        props.setLoading(false);
+
         history.push("/");
       };
 
@@ -29,7 +34,7 @@ const Navbar = (props:any) => {
             <nav>
                 <div className="nav-wrapper red">
                     <div className="row">
-                        <div className="col"><Link to="/" className="brand-logo black-text center">pTreat</Link></div>
+                        <div className="col"><Link to="/" className="brand-logo black-text center">pTreat {props.front.loading && <> - LOADING</>}</Link></div>
                         {/* Enabled on Mobile */}
                         {
                             localStorage.getItem("key") !== undefined &&
@@ -108,7 +113,8 @@ const mapStateToProps = (state:any) => ({
 });
 
 const mapDispatchToProps = {
-    setActionButton: setActionButton
+    setActionButton: setActionButton,
+    setLoading: setLoading
 }
  
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

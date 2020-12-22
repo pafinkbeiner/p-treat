@@ -2,10 +2,8 @@ import React from "react";
 import axios from "axios";
 import { Redirect, Link } from "react-router-dom";
 import Alert from "../../components/Alert/Alert";
-
-export interface Props {
-    refresh: Function;
-}
+import { connect } from "react-redux";
+import { setActionButton, setLoading } from "../../redux/actions/frontActions";
  
 export interface State {
     email: string,
@@ -14,8 +12,8 @@ export interface State {
     redirect: boolean | undefined;
 }
  
-class Login extends React.Component<Props, State> {
-    constructor(props: Props) {
+class Login extends React.Component<any, State> {
+    constructor(props: any) {
         super(props);
         this.state = {
             email: "",
@@ -44,7 +42,11 @@ class Login extends React.Component<Props, State> {
             if (auth) {
               localStorage.setItem("key", auth.data.key);
               this.setState({ redirect: true });
-              this.props.refresh(true);
+
+              //Redux front changes
+              this.props.setLoading(true);
+              this.props.setActionButton(false);
+
             } else {
               this.setState({
                 redirect: undefined,
@@ -105,4 +107,13 @@ class Login extends React.Component<Props, State> {
     }
 }
  
-export default Login;
+const mapStateToProps = (state:any) => ({
+  front: state.front
+});
+
+const mapDispatchToProps = {
+  setActionButton: setActionButton,
+  setLoading: setLoading
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

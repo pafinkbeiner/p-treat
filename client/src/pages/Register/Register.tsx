@@ -2,11 +2,9 @@ import React from 'react';
 import Alert from '../../components/Alert/Alert';
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
+import { connect } from 'react-redux';
+import { setActionButton, setLoading } from '../../redux/actions/frontActions';
 
-export interface Props {
-    
-}
- 
 export interface State {
     username: string,
     password: string,
@@ -15,9 +13,9 @@ export interface State {
     err: boolean
 }
  
-class Register extends React.Component<Props, State> {
+class Register extends React.Component<any, State> {
 
-    constructor(props: Props) {
+    constructor(props: any) {
         super(props);
         this.state = {
           username: "",
@@ -27,6 +25,7 @@ class Register extends React.Component<Props, State> {
           err: false
         };
         this.onSubmit = this.onSubmit.bind(this);
+        this.canLogin = this.canLogin.bind(this)
       }
     
       canLogin() {
@@ -46,6 +45,11 @@ class Register extends React.Component<Props, State> {
             if (auth) {
               localStorage.setItem("key", auth.data.key);
               this.setState({ redirect: true });
+
+              //Redux front changes
+              this.props.setLoading(true);
+              this.props.setActionButton(false);
+
             } else {
               this.setState({
                 redirect: undefined,
@@ -116,4 +120,13 @@ class Register extends React.Component<Props, State> {
       }
 }
  
-export default Register;
+const mapStateToProps = (state:any) => ({
+  front: state.front
+});
+
+const mapDispatchToProps = {
+  setActionButton: setActionButton,
+  setLoading: setLoading
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
