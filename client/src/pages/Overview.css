@@ -36,10 +36,11 @@
 }
 
 .custom-card .custom-card-image{
+  position: absolute;
   background-color: aliceblue;
   border-radius: 5px;
-  width: 100%;
-  height: 85%;
+  width: 94.5%;
+  height: 75%;
   transition: all 0.7s;
 }
 
@@ -52,10 +53,39 @@
   background-color: rgb(192, 10, 10);
 }
 
+.custom-card .custom-card-description{
+  position: absolute;
+  width: 90%;
+  height: 105px;
+  overflow: hidden;
+  top: 10px;
+  left: 15px;
+  word-wrap: break-word;
+}
+
 .custom-card .custom-card-title{
   position: absolute;
   color: black;
   font-size: 27px;
   bottom: 2rem;
   left: 1rem;
+  text-shadow: 2px 2px 5px red;
+}
+
+.custom-card-rating-thumb{
+  position: absolute;
+  bottom: 9px;
+  left: 10px;
+}
+
+.custom-card-rating-text{
+  position: absolute;
+  bottom: -4px;
+  left: 40px;
+}
+
+.custom-card .custom-card-href{
+  position: absolute;
+  right: 11px;
+  bottom: 4px;
 }

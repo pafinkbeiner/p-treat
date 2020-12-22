@@ -84,38 +84,35 @@ class Overview extends React.Component<Props, State> {
                   <div key={category} className="row">
                     <div className="own">
                       <h3>{category}</h3>
-                      <div className="col s4">
-                        <div className="custom-card">
-                          <div className="custom-card-image">
-     
-                          </div>
-                          <h3 className="custom-card-title">
-                                Title
-                            </h3>
-                        </div>
-                      </div>
+
                       {this.state.sites &&
                         this.state.sites
                           .filter((item) => item.category === category)
                           .slice(0, 3)
                           .map((site: Site) => {
                             return (
-                              <div key={site._id} className="col s4">
-                                <div className="card small">
-                                  <div className="card-image">
-                                    <img src={site.thumbs[0]} alt="" />
-                                    <span className="card-title">
-                                      {site.name}
-                                    </span>
+                              <div key={site._id} className="col s3">
+                                <div className="custom-card">
+        
+                                  <div className="custom-card-description">
+                                    {site.description}
                                   </div>
-                                  <div className="card-content">
-                                    <p>{site.description}</p>
-                                  </div>
-                                  <div className="card-action">
-                                  <Link to={`/site/${site._id}`}>Link</Link>
-                                  </div>
+        
+                                  <img className="custom-card-image" src={site.thumbs[0]} alt=""/>
+        
+                                  <h3 className="custom-card-title">
+                                        {site.name}
+                                  </h3>
+        
+                                  <i className=" custom-card-rating-thumb material-icons red-text">thumb_up</i>
+                                  <p className=" custom-card-rating-text red-text">90%</p>
+        
+                                  <Link to="/" className="custom-card-href">
+                                    <i className="material-icons red-text">send</i>
+                                  </Link>
+        
                                 </div>
-                              </div>
+                            </div>
                             );
                           })}
                           
