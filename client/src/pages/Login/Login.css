@@ -1,0 +1,22 @@
+.login {
+  align-items: center;
+  align-content: center;
+  width: 50%;
+  height: 100%;
+  border-radius: 5px;
+  border: 2px solid rgb(192, 10, 10);
+  padding: 3rem;
+  margin: auto;
+  margin-top: 9%;
+  margin-bottom: 9%;
+}
+
+.login-form {
+  width: 100%;
+  text-align: center;
+}
+
+.margin-button {
+    margin-top: 2rem;
+}
+

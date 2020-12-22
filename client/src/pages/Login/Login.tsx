@@ -4,6 +4,7 @@ import { Redirect, Link } from "react-router-dom";
 import Alert from "../../components/Alert/Alert";
 import { connect } from "react-redux";
 import { setActionButton, setLoading } from "../../redux/actions/frontActions";
+import './Login.css';
  
 export interface State {
     email: string,
@@ -85,7 +86,7 @@ class Login extends React.Component<any, State> {
                     />
                   </div>
     
-                  <div className="input-group mb-3">
+                  <div className="input-group mb-3 label-red">
                     <input
                       type="password"
                       value={this.state.password}
@@ -97,7 +98,7 @@ class Login extends React.Component<any, State> {
                     />
                   </div>
     
-                  <input className="btn btn-primary" value="Login" type="submit"></input>
+                  <input className="margin-button btn btn-primary red" value="Login" type="submit"></input>
                 </form>
               </div>
               { this.state.err && <Alert message="Error occured while performing login"/>}
