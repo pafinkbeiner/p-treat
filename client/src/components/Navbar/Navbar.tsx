@@ -23,9 +23,9 @@ const Navbar = () => {
     
         localStorage.removeItem("key");
     
-        history.push("/");
-
         setRefresh(true)
+
+        history.push("/");
       };
 
         return (  
@@ -59,11 +59,24 @@ const Navbar = () => {
                             <div className="bottom-row">
                             
                                 <div className="row">
+
+                                    {/* Login Redirect */}
+
+                                    {localStorage.getItem("key") ? 
+
+                                    <div className="col s12">                        
+                                        <button onClick={onSubmit} className="btn-floating btn-large grey">
+                                            <i className="large material-icons">exit_to_app</i>
+                                        </button>
+                                    </div>
+                                    :
                                     <div className="col s12">                        
                                         <Link to="/login" className="btn-floating btn-large grey">
                                             <i className="large material-icons">person</i>
                                         </Link>
                                     </div>
+                                    }
+  
                                     <div className="col s12">  
                                         <Link to="/favorites" className="btn-floating btn-large grey">
                                             <i className="large material-icons">favorite</i>
