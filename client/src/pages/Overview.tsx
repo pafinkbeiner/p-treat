@@ -1,6 +1,7 @@
 import Axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
+import CustomCard from "../components/CustomCard/CustomCard";
 import { Site } from "../models/Site";
 import "./Overview.css";
 
@@ -46,31 +47,20 @@ class Overview extends React.Component<Props, State> {
                       .filter(item => item.category === category)
                       .slice(0, 4).map((site: Site) => {
                         return (
-                          <div key={site._id} className="col s12">
-                            <div className="card">
-                              <div className="card-image">
-                                <img src={site.thumbs[0]} alt="" />
-                                <span className="card-title">{site.name}</span>
-                              </div>
-                              <div className="card-content">
-                                <p>{site.description}</p>
-                              </div>
-                              <div className="card-action">
-                              <Link to={`/site/${site._id}`}>Link</Link>
-                              </div>
-                            </div>
+                          <div key={site._id} className="col s6">
+                            <CustomCard site={site}/>
                           </div>
                         );
                     })}
-                  <div className="col s12">
-                    <Link to={`/category/${category}`}>
-                      <div className="card">
-                        <div className="card-content">
-                          <p>{">"}</p>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
+
+                    <div className="hover-arrow">
+                          <Link to={`/category/${category}`}>
+                            <i className="large material-icons white-text">
+                              chevron_right
+                            </i>
+                          </Link>
+                    </div>
+
                 </div>
               );
             })}
@@ -92,27 +82,7 @@ class Overview extends React.Component<Props, State> {
                           .map((site: Site) => {
                             return (
                               <div key={site._id} className="col s3">
-                                <div className="custom-card">
-        
-                                  <div className="custom-card-description">
-                                    {site.description}
-                                  </div>
-        
-                                  <img className="custom-card-image" src={site.thumbs[0]} alt=""/>
-        
-                                  <h3 className="custom-card-title">
-                                        {site.name}
-                                  </h3>
-        
-                                  <i className=" custom-card-rating-thumb material-icons red-text">thumb_up</i>
-
-                                  <p className={`custom-card-rating-text ${ (site.score < 40) && "red-text"} ${ (site.score >= 40 && site.score < 75) && "yellow-text"} ${ (site.score >= 75) && "green-text"}`}>{site.score+"%"}</p>
-        
-                                  <Link to={`/site/${site._id}`} className="custom-card-href">
-                                    <i className="material-icons red-text">send</i>
-                                  </Link>
-        
-                                </div>
+                               <CustomCard site={site}/>
                             </div>
                             );
                           })}
