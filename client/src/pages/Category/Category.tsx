@@ -17,8 +17,6 @@ class Category extends React.Component<any, State> {
 
     componentDidMount(){
 
-        console.log("Props: ", this.props);
-
         Axios.get<Site[]>(`${process.env.REACT_APP_API_URL}/sites/byCategory/${this.props.match.params.category}`)
         .then((res) => this.setState({ sites: res.data }) )
         .catch((err) =>

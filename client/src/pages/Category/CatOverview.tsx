@@ -31,7 +31,7 @@ class CatOverview extends React.Component<any, State> {
           {this.state.categories && this.state.categories.map(category => {
                 return (
                     <div className="col s6">
-                        <Link to={`/category/${category}`}><p className="white-text">{category}</p></Link>
+                        <Link to={`/category/${category}`}><h5 className="red-text">{category}</h5></Link>
                     </div>
                 )
             })}
@@ -42,7 +42,7 @@ class CatOverview extends React.Component<any, State> {
           {this.state.categories && this.state.categories.map(category => {
                 return (
                     <div className="col s4">
-                        <Link to={`/category/${category}`}><p className="white-text">{category}</p></Link>
+                        <Link to={`/category/${category}`}><h5 className="red-text">{category}</h5></Link>
                     </div>
                 )
             })}
