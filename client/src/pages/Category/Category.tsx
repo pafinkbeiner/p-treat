@@ -1,5 +1,7 @@
 import Axios from "axios";
 import React from "react";
+import { Link } from "react-router-dom";
+import CustomCard from "../../components/CustomCard/CustomCard";
 import { Site } from "../../models/Site";
 import "./Category.css";
  
@@ -26,7 +28,53 @@ class Category extends React.Component<any, State> {
     }
 
     render() { 
-        return ( <></> );
+        return ( 
+            <>
+            {/* Enabled on Mobile */}
+            <div className="hide-on-large-only row">
+              <div className="own">
+                <h3>{this.props.match.params.category}</h3>
+                {this.state.sites &&
+                      
+                    <div className="col s12">
+                       <CustomCard site={this.state.sites[0]}/>
+                    </div>
+                } 
+                {this.state.sites &&
+                  this.state.sites
+                    .slice(1).map((site: Site) => {
+                      return (
+                        <div key={site._id} className="col s6">
+                         <CustomCard site={site}/>
+                      </div>
+                      );
+                    })} 
+              </div>
+            </div>
+    
+            {/* Enabled on Desktop */}
+            <div className="hide-on-med-and-down row">
+              <div className="own">
+                <h3>{this.props.match.params.category}</h3>
+                {this.state.sites &&
+                      
+                    <div className="col s6">
+                       <CustomCard site={this.state.sites[0]}/>
+                    </div>
+                } 
+                {this.state.sites &&
+                  this.state.sites
+                    .slice(1).map((site: Site) => {
+                      return (
+                        <div key={site._id} className="col s3">
+                         <CustomCard site={site}/>
+                      </div>
+                      );
+                    })} 
+              </div>
+            </div>
+          </>
+        );
     }
 }
  

@@ -7,6 +7,7 @@
     width: auto;
     padding: 7px;
     border: 2px solid rgb(192, 10, 10);
+    margin-bottom: 1rem;
   }
   
   .custom-card .custom-card-image{

@@ -14,6 +14,7 @@ import store from "./redux/store"
 import Share from './pages/Share/Share';
 import Settings from './pages/Settings/Settings';
 import AddSite from './pages/AddSite/AddSite';
+import CatOverview from "./pages/Category/CatOverview"
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
                   <Route path="/share" component={Share}/>
                   <Route path="/settings" component={Settings}/>
                   <Route path="/addSite" component={AddSite} /> 
+                  <Route exact path="/category" component={CatOverview} /> 
                 </Switch>
                 </div>
             </Router>
