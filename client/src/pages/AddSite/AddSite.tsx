@@ -23,7 +23,8 @@ export interface State {
     tempValues: {
         keyword: string;
         thumb: string;    
-    }
+    },
+    url: string;
 }
  
 class AddSite extends React.Component<Props, State> {
@@ -44,7 +45,8 @@ class AddSite extends React.Component<Props, State> {
             tempValues: {
                 keyword: "",
                 thumb: ""
-            }
+            },
+            url: ""
          };
     }
 
@@ -62,6 +64,7 @@ class AddSite extends React.Component<Props, State> {
             keywords: this.state.keywords,
             review:this.state.review,
             exclusive: this.state.exclusive,
+            url: this.state.url
          },{
             headers: { Authorization: `Bearer ${localStorage.getItem("key")}` }
         })
@@ -89,9 +92,14 @@ class AddSite extends React.Component<Props, State> {
                             <label htmlFor="subname">Subname</label>
                         </div>
 
-                        <div className="input-field col s12">
+                        <div className="input-field col s6">
                             <input onChange={(e) => {this.setState({category: e.target.value})}} value={this.state.category} id="category" name="category" type="text" className="validate"/>
                             <label htmlFor="category">Category</label>
+                        </div>
+
+                        <div className="input-field col s6">
+                            <input onChange={(e) => {this.setState({url: e.target.value})}} value={this.state.url} id="url" name="url" type="text" className="validate"/>
+                            <label htmlFor="url">Url</label>
                         </div>
       
                         <div className="input-field col s4">

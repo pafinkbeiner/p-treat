@@ -65,7 +65,8 @@ export const addSite = (req: Request, res: Response) => {
     req.body.score !== undefined && 
     req.body.keywords !== undefined && 
     req.body.review !== undefined && 
-    req.body.exclusive !== undefined 
+    req.body.exclusive !== undefined &&
+    req.body.url !== undefined
   ) {
     const site = new Site({
       name: req.body.name,
@@ -85,6 +86,7 @@ export const addSite = (req: Request, res: Response) => {
         like: req.body.like,
         disklike: req.body.disklike,
       },
+      url: req.body.url
     });
 
     console.log("Versuche Seite: "+req.body.name+" hinzuzufügen!");

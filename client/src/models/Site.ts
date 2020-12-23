@@ -17,5 +17,6 @@ export interface Site{
     meta: {
         updated: Date;
         uploaded: Date;
-    }
+    },
+    url: string;
 };

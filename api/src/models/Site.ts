@@ -19,6 +19,7 @@ export interface SiteInterface extends Document{
         updated: Date;
         uploaded: Date;
     }
+    url: string;
 }
 
 const SiteSchema: Schema = new Schema({
@@ -95,7 +96,12 @@ const SiteSchema: Schema = new Schema({
             required: true,
             default: Date.now()
         }
-    }
+    },
+    url:{
+        type: String,
+        required: true,
+        default: ""
+    },
 });
 
 

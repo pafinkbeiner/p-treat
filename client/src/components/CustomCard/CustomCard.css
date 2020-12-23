@@ -25,9 +25,9 @@
     transform:rotateY(90deg);
   }
   
-  .custom-card:hover{
+  /* .custom-card:hover{
     background-color: rgb(192, 10, 10);
-  }
+  } */
   
   .custom-card .custom-card-description{
     position: absolute;
@@ -43,7 +43,7 @@
     position: absolute;
     color: white;
     font-size: 27px;
-    bottom: 2rem;
+    bottom: 2.5rem;
     left: 1rem;
     /*text-shadow: 2px 2px 5px red;*/
   }
