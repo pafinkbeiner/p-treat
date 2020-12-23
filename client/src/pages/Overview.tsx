@@ -41,7 +41,7 @@ class Overview extends React.Component<Props, State> {
             this.state.categories.map((category: string) => {
               return (
                 <div key={category} className="row">
-                  <h3>{category}</h3>
+                  <h3 >{category}</h3>
                   {this.state.sites &&
                     this.state.sites
                       .filter(item => item.category === category)
@@ -94,6 +94,7 @@ class Overview extends React.Component<Props, State> {
                           </i>
                         </Link>
                       </div>
+                      
                     </div>
                   </div>
               );

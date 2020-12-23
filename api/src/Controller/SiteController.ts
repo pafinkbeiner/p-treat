@@ -25,7 +25,7 @@ export const getSiteByName = (req: Request, res: Response) => {
 };
 
 export const getSitesByCategory = (req: Request, res: Response) => {
-  const sites = Site.findOne(
+  const sites = Site.find(
     { category: req.params.category },
     (err: any, sites: SiteInterface[]) => {
       if (err) {
