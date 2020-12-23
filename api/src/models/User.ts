@@ -41,7 +41,7 @@ const UserSchema: Schema = new Schema({
     role: {
         type: Number,
         required: false,
-        default: 0
+        default: 1
     },
     liked: {
         type: Array,

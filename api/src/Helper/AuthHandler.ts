@@ -8,6 +8,7 @@ export function extractBearerToken(req: Request): string | undefined{
 }
 
 export function allowCustomer(req: Request, res: Response ,next: NextFunction){
+
     let bearer: any = req.headers["authorization"];
 
     if(bearer != undefined){

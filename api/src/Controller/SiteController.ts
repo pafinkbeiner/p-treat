@@ -87,10 +87,12 @@ export const addSite = (req: Request, res: Response) => {
       },
     });
 
+    console.log("Versuche Seite: "+req.body.name+" hinzuzufügen!");
+
     site
       .save()
-      .then((result) => res.send(result))
-      .catch((err) => res.send(err));
+      .then((result) => { console.log("Erfolg!"); res.send(result)})
+      .catch((err) => { console.log("Fehler!"); res.send(err)});
   } else {
     res.sendStatus(400).json({ succ: 0 });
   }

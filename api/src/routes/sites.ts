@@ -1,7 +1,7 @@
 import * as express from "express";
 import * as SiteController from "../Controller/SiteController"
 import * as StatController from "../Controller/StatController"
-import { allowAdmin } from "../Helper/AuthHandler";
+import { allowAdmin, allowCustomer } from "../Helper/AuthHandler";
 
 const router = express.Router();
 
@@ -9,11 +9,11 @@ const router = express.Router();
 
 router.get("/add", SiteController.addSiteForm);
 
-router.post("/add", SiteController.addSite);
+router.post("/add", allowCustomer, SiteController.addSite);
 
 /* GET Sites */
 
-router.get("/", SiteController.allSites);
+router.get("/",SiteController.allSites);
 
 router.get("/byId/:id", SiteController.getSiteById);
 
