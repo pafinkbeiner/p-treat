@@ -125,21 +125,25 @@ const Navbar = (props:any) => {
                     </div>
             
                 </div>
-                <nav>
-                    <div className="nav-wrapper breat">
-                    <div className="col s12">
-                        {
-                            breatcrums.map(crum => {
-                                return (
-                                    <Link key={crum} className="breadcrumb" to={ crum == "home" ? "/" : "/"+crum}>
-                                        {crum}
-                                    </Link>
-                                )
-                            })
-                        }
-                    </div>
-                    </div>
-                </nav>
+                {
+                    breatcrums.length > 1 && breatcrums[1] !== "" &&                 
+                    <nav>
+                        <div className="nav-wrapper breat">
+                        <div className="col s12">
+                            {
+                                breatcrums.map(crum => {
+                                    return (
+                                        <Link key={crum} className="breadcrumb" to={ crum == "home" ? "/" : "/"+crum}>
+                                            {crum}
+                                        </Link>
+                                    )
+                                })
+                            }
+                        </div>
+                        </div>
+                    </nav>
+                }
+
             </nav>
         );
 }
