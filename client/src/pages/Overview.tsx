@@ -19,7 +19,7 @@ class Overview extends React.Component<Props, State> {
 
   componentDidMount() {
     Axios.get<Site[]>(`${process.env.REACT_APP_API_URL}/sites`)
-      .then((res) => this.setState({ sites: res.data }))
+      .then((res) => this.setState({ sites: res.data }) )
       .catch((err) =>
         console.log("(Overview.tsx) Error while fetching all Sites...", err)
       );
@@ -88,7 +88,7 @@ class Overview extends React.Component<Props, State> {
                       {this.state.sites &&
                         this.state.sites
                           .filter((item) => item.category === category)
-                          .slice(0, 3)
+                          .slice(0, 4)
                           .map((site: Site) => {
                             return (
                               <div key={site._id} className="col s3">
