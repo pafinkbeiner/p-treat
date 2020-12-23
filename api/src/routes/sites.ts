@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/add", SiteController.addSiteForm);
 
-router.post("/add", SiteController.addSite);
+router.post("/add",allowAdmin, SiteController.addSite);
 
 /* GET Sites */
 
@@ -21,7 +21,7 @@ router.get("/byCategory/:category", SiteController.getSitesByCategory);
 
 /* GET Categories */
 
-router.get("/categories", allowAdmin , StatController.getCategories);
+router.get("/categories" , StatController.getCategories);
 
 
 export default router;
