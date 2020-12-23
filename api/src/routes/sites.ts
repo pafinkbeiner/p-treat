@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/add", SiteController.addSiteForm);
 
-router.post("/add",allowAdmin, SiteController.addSite);
+router.post("/add", SiteController.addSite);
 
 /* GET Sites */
 

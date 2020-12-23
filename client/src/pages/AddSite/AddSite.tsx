@@ -1,4 +1,7 @@
+import Axios from "axios";
 import React from "react"
+import { Redirect } from "react-router-dom";
+import { Site } from "../../models/Site";
 import "./AddSite.css"
 
 export interface Props {
@@ -6,6 +9,8 @@ export interface Props {
 }
  
 export interface State {
+    err: boolean;
+    redirect: boolean|undefined;
     name: string;
     subname: string;
     category: string;
@@ -25,6 +30,8 @@ class AddSite extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = { 
+            err: false,
+            redirect: undefined,
             name: "",
             subname: "",
             category: "",
@@ -43,7 +50,28 @@ class AddSite extends React.Component<Props, State> {
 
     onSubmit = (e:any) => {
         e.preventDefault();
-        console.log(this.state);
+
+        Axios
+        .post(`${process.env.REACT_APP_API_URL}/sites/add`, { 
+            name: this.state.name,
+            subname: this.state.subname,
+            category: this.state.category,
+            thumbs: this.state.thumbs,
+            description: this.state.description,
+            score: this.state.score,
+            keywords: this.state.keywords,
+            review:this.state.review,
+            exclusive: this.state.exclusive,
+         },{
+            headers: { Authorization: `Bearer ${localStorage.getItem("key")}` }
+        })
+        .then((auth) => {
+            this.setState({redirect: true});
+        })
+        .catch((err) => {
+          this.setState({err: true})
+        });
+
     }
 
     render() { 
@@ -56,42 +84,50 @@ class AddSite extends React.Component<Props, State> {
                             <label htmlFor="name">Name</label>
                         </div>
   
-
-
                         <div className="input-field col s6">
                             <input onChange={(e) => {this.setState({subname: e.target.value})}} value={this.state.subname} id="subname" name="subname" type="text" className="validate"/>
                             <label htmlFor="subname">Subname</label>
                         </div>
 
-
-             
-                        <div className="input-field col s6">
+                        <div className="input-field col s12">
                             <input onChange={(e) => {this.setState({category: e.target.value})}} value={this.state.category} id="category" name="category" type="text" className="validate"/>
                             <label htmlFor="category">Category</label>
                         </div>
       
-
-                        <div className="input-field col s6">
-                            <input onChange={() => {}} value={this.state.thumbs} id="thumbs" name="thumbs" type="text" className="validate"/>
+                        <div className="input-field col s4">
+                            <input onChange={ (e) => { this.setState( (state: State) => { return { ...state, tempValues: { ...state.tempValues, thumb: e.target.value } } } ) } } value={this.state.tempValues.thumb} id="thumbs" name="thumbs" type="text" className="validate"/>
                             <label htmlFor="thumbs">Thumbs</label>
+                        </div> 
+
+                        <div className="input-field col s2">
+                            <input onClick={ (e) => { 
+                                
+                                this.setState((state:State) => {
+                                    return{
+                                        thumbs: [...state.thumbs, this.state.tempValues.thumb]
+                                    }
+                                    
+                                });
+
+                                this.setState( (state: State) => { return { ...state, tempValues: { ...state.tempValues, thumb: "" } } })
+
+                             } } className="btn btn-primary red" type="button" value="Add"/>
                         </div>
 
-
-    
                         <div className="input-field col s6">
+                            <textarea className="white-text" readOnly={true} value={this.state.thumbs.toString()}></textarea>
+                        </div>
+
+                        <div className="input-field col s12">
                             <input onChange={(e) => {this.setState({description: e.target.value})}} value={this.state.description} id="description" name="description" type="text" className="validate"/>
                             <label htmlFor="description">Description</label>
                         </div>
 
-
-           
-                        <div className="input-field col s6">
+                        <div className="input-field col s12">
                             <input onChange={(e) => {this.setState({score: parseInt( e.target.value ) })}} value={this.state.score} id="score" name="score" type="number" className="validate"/>
                             <label htmlFor="score">Score</label>
                         </div>
       
-
-         
                         <div className="input-field col s4">
                             <input onChange={ (e) => { this.setState( (state: State) => { return { ...state, tempValues: { ...state.tempValues, keyword: e.target.value } } } ) } } value={this.state.tempValues.keyword} id="keywords" name="keywords" type="text" className="validate"/>
                             <label htmlFor="keywords">Keywords</label>
@@ -118,7 +154,7 @@ class AddSite extends React.Component<Props, State> {
         
 
                     <div className="row">
-                        <div className="input-field col s6">
+                        <div className="input-field col s12">
                             <input onChange={(e) => {this.setState({review: e.target.value})}} value={this.state.review} id="review" name="review" type="text" className="validate"/>
                             <label htmlFor="review">Review</label>
                         </div>
@@ -143,6 +179,7 @@ class AddSite extends React.Component<Props, State> {
                     </div>
 
                 </form>
+                { this.state.redirect && <Redirect to="/"/> }
             </div>
         );
     }
