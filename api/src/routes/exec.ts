@@ -4,7 +4,7 @@ import * as InteractController from "../Controller/InteractController"
 
 const router = express.Router();
 
-router.get("/like", InteractController.performLike);
+router.get("/like/:siteId", InteractController.performLike);
 
 
 export default router;

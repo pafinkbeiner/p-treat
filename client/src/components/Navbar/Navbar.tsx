@@ -56,17 +56,10 @@ const Navbar = (props:any) => {
                             </div>
                         }
 
-                        {/* Enabled on Mobile */}
-                        {
-                            localStorage.getItem("key") !== undefined &&
-                            <ul className="right hide-on-large-only mr-1">
-                                <li onClick={onSubmit}><a><i className="material-icons black-text">exit_to_app</i></a></li>
-                            </ul>
-                        }
                         {/* Enabled on Desktop */}
                         {
                              localStorage.getItem("key") &&
-                            <ul className="right hide-on-med-and-down mr-1">
+                            <ul className="right mr-1">
                                 <li onClick={onSubmit}><a><i className="material-icons black-text">exit_to_app</i></a></li> 
                             </ul>
                         }
@@ -133,7 +126,7 @@ const Navbar = (props:any) => {
                             {
                                 breatcrums.map(crum => {
                                     return (
-                                        <Link key={crum} className="breadcrumb" to={ crum == "home" ? "/" : "/"+crum}>
+                                        <Link key={crum} className="breadcrumb" to={ crum === "home" ? "/" : "/"+crum}>
                                             {crum}
                                         </Link>
                                     )
