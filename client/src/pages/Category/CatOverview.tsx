@@ -30,7 +30,7 @@ class CatOverview extends React.Component<any, State> {
           <div className="hide-on-large-only row">
           {this.state.categories && this.state.categories.map(category => {
                 return (
-                    <div className="col s6">
+                    <div key={category} className="col s6">
                         <Link to={`/category/${category}`}><h5 className="red-text">{category}</h5></Link>
                     </div>
                 )
@@ -41,7 +41,7 @@ class CatOverview extends React.Component<any, State> {
           <div className="hide-on-med-and-down row">
           {this.state.categories && this.state.categories.map(category => {
                 return (
-                    <div className="col s4">
+                    <div key={category} className="col s4">
                         <Link to={`/category/${category}`}><h5 className="red-text">{category}</h5></Link>
                     </div>
                 )

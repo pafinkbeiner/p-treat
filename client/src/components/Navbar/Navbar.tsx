@@ -1,18 +1,31 @@
-import React, { useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import {connect} from "react-redux"
-import "./Navbar.css";
 import { setActionButton, setLoading } from "../../redux/actions/frontActions"
+import { useParams } from 'react-router-dom';
+import "./Navbar.css";
  
 const Navbar = (props:any) => {
 
+    const [breatcrums, setBreatcrums] = useState<string[]>([]);
+
+    let params = useLocation();
     let history = useHistory();
 
     useEffect(() => {
         if(props.front.loading) props.setLoading(false);
     }, [props.front.loading])
 
+    useEffect(() => {
+        let array = params.pathname.split("/");
+        array[0] = "home"
+        setBreatcrums(array);
+    }, [params])
+
     const toggleActionButton = () => {
+
+        console.log(breatcrums);
+
         if(props.front.actionButtonOpen){
             props.setActionButton(false);
         }else{
@@ -112,6 +125,21 @@ const Navbar = (props:any) => {
                     </div>
             
                 </div>
+                <nav>
+                    <div className="nav-wrapper breat">
+                    <div className="col s12">
+                        {
+                            breatcrums.map(crum => {
+                                return (
+                                    <Link key={crum} className="breadcrumb" to={ crum == "home" ? "/" : "/"+crum}>
+                                        {crum}
+                                    </Link>
+                                )
+                            })
+                        }
+                    </div>
+                    </div>
+                </nav>
             </nav>
         );
 }

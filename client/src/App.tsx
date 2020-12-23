@@ -16,7 +16,7 @@ import Settings from './pages/Settings/Settings';
 import AddSite from './pages/AddSite/AddSite';
 import CatOverview from "./pages/Category/CatOverview"
 
-function App() {
+function App(props: any) {
 
     return (
       <Provider store={store}>
@@ -24,6 +24,9 @@ function App() {
           
             <Router>
               <Navbar/>
+              <div className="row"></div>
+              <div className="row"></div>
+              <div className="row"></div>
               <div className="container">
               <Switch>
                   <Route exact path="/" component={Overview}/>
