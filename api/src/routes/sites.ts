@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as SiteController from "../Controller/SiteController"
 import * as StatController from "../Controller/StatController"
+import { allowAdmin } from "../Helper/AuthHandler";
 
 const router = express.Router();
 
@@ -20,7 +21,7 @@ router.get("/byCategory/:category", SiteController.getSitesByCategory);
 
 /* GET Categories */
 
-router.get("/categories", StatController.getCategories);
+router.get("/categories", allowAdmin , StatController.getCategories);
 
 
 export default router;
