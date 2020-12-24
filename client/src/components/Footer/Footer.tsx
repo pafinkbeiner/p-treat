@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "./Footer.css"
 
 export interface Props {
@@ -20,23 +21,30 @@ class Footer extends React.Component<Props, State> {
                 <div className="row">
                     <div className="col s4">
                         <ul>
-                            <li>
-                                Impressum
-                            </li>
+                            <Link className="white-text" to="/imprint">
+                                <li>
+                                    Impressum
+                                </li>
+                            </Link>
+
                         </ul>
                     </div>
                     <div className="col s4">
                         <ul>
-                            <li>
-                                Privacy
-                            </li>
+                            <Link className="white-text" to="/privacy">
+                                <li>
+                                    Privacy
+                                </li>
+                            </Link>
                         </ul>
                     </div>
                     <div className="col s4">
                         <ul>
-                            <li>
-                                Terms of Use
-                            </li>
+                            <Link className="white-text" to="/terms">
+                                <li>
+                                    Terms of Use
+                                </li>
+                            </Link>
                         </ul>
                     </div>
                 </div>

@@ -47,10 +47,8 @@ function App(props: any) {
                   <Route exact path="/privacy" component={Privacy} /> 
                 </Switch>
                 </main>
+                <Footer/>
             </Router>
-    
-    
-          <Footer/>
         </div>
       </Provider>
     );
