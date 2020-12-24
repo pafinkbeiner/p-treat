@@ -1,5 +1,4 @@
-import { stringify } from 'querystring';
-import React, { Component, CSSProperties, useState }  from 'react';
+import React, { useState }  from 'react';
 import "./Slideshow.css";
 
 const Slideshow = ( props: { images: string[] } ) => {
@@ -31,7 +30,7 @@ const Slideshow = ( props: { images: string[] } ) => {
                 { props.images && props.images.map((image:string, index: number) => {
 
                     return (
-                    <div style={ slideIndex === index+1 ? {display: "block"} : {display: "none"}} className="mySlides fade">
+                    <div key={index} style={ slideIndex === index+1 ? {display: "block"} : {display: "none"}} className="mySlides fade">
                         <div className="numbertext">{index+1} / {props.images.length}</div>
                             <img src={image} width="100%" alt="text"/>
                         {/* <div className="text">Caption Text</div> */}
@@ -49,7 +48,7 @@ const Slideshow = ( props: { images: string[] } ) => {
                 {
                     props.images && props.images.map( (image: string, index: number) => {
                         return (
-                            <span style={ slideIndex === index+1 ? {color: "white"} : {color: "grey"}} className="dot" onClick={() => currentSlide(index+1)}></span> 
+                            <span key={index} style={ slideIndex === index+1 ? {color: "white"} : {color: "grey"}} className="dot" onClick={() => currentSlide(index+1)}></span> 
                         )
                     })
                 }
