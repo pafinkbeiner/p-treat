@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "run-p api db frontend",
+    "start": "run-p api client",
     "api": "(cd api && npm run start:dev)",
-    "db": "(cd db && npm run start:dev)",
-    "frontend": "(cd frontend && npm run start)"
+    "client": "(cd client && npm run start)"
   },
   "keywords": [],
   "author": "",
