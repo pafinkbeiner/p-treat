@@ -1,6 +1,8 @@
 import * as express from "express";
 import * as AuthHandler from "../Helper/AuthHandler";
 import jwt from "jsonwebtoken"
+import User from "../models/User";
+import bcrypt from "bcrypt"
 
 const router = express.Router();
 
@@ -72,5 +74,32 @@ router.get("/decodeJWT", async(req, res, next) => {
 
 });
 
+router.get("/refreshJWT", async(req, res, next) => {
+
+  let bearer: any = req.headers["authorization"];
+
+  if(bearer != undefined){
+
+      const token = bearer.split(" ")[1];
+
+      jwt.verify(token, process.env.JWT_SECRET || "", async(err:any, authData: any) => {;
+        
+        let user = await User.findOne({ email: authData.email });
+
+        if(user != undefined){
+    
+          res.json( {key: jwt.sign(user.toJSON(), process.env.JWT_SECRET||"" )} );
+    
+        }else{
+          res.status(400).json({error: "Problem authenticating"});
+        }
+
+    });
+
+  }else{
+      res.status(400).json({error: "Bearer token was not provided"});
+  }
+
+});
 
 export default router;

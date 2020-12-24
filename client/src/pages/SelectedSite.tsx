@@ -2,6 +2,7 @@ import Axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Slideshow from '../components/Slideshow/Slideshow';
+import { refreshJWT } from '../helper/jwtHelper';
 import {Site} from "../models/Site"
 
 export interface Props {
@@ -32,7 +33,7 @@ class SelectedSite extends React.Component<any, State> {
     onLike = () => {
         Axios.get<Site>(`${process.env.REACT_APP_API_URL}/exec/like/${this.props.match.params.id}`,{
             headers: { Authorization: `Bearer ${localStorage.getItem("key")}` }
-        }).then(res => {this.fetchData()})
+        }).then(res => {this.fetchData(); refreshJWT()})
         .catch( err => console.log("(Site.tsx) Error while fetching a Like...", err));
 
     }
@@ -40,7 +41,7 @@ class SelectedSite extends React.Component<any, State> {
     onDislike = () => {
         Axios.get<Site>(`${process.env.REACT_APP_API_URL}/exec/dislike/${this.props.match.params.id}`,{
             headers: { Authorization: `Bearer ${localStorage.getItem("key")}` }
-        }).then(res => {this.fetchData()})
+        }).then(res => {this.fetchData(); refreshJWT()})
         .catch( err => console.log("(Site.tsx) Error while fetching a Dislike...", err));
     }
 
