@@ -2,6 +2,7 @@ import React from "react"
 import axios from "axios"
 import { Site } from "../../models/Site";
 import { User } from "../../models/User";
+import CustomCard from "../../components/CustomCard/CustomCard";
 
 export interface Props {
     
@@ -46,7 +47,11 @@ class Favorites extends React.Component<Props, any> {
                     <div className="row">
                         {
                             this.state.favorites.map((fav: Site) => {
-                                return <h1>{fav.name}</h1>
+                                return (
+                                    <div className="col s6">
+                                        <CustomCard site={fav} />
+                                    </div>
+                                )
                             })
                         }
                     </div>
