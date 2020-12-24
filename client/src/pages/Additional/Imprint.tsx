@@ -8,7 +8,7 @@ export interface State {
     
 }
  
-class Privacy extends React.Component<Props, State> {
+class Imprint extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {  };
@@ -18,4 +18,4 @@ class Privacy extends React.Component<Props, State> {
     }
 }
  
-export default Privacy;
+export default Imprint;

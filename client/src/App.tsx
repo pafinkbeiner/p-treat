@@ -15,6 +15,9 @@ import Share from './pages/Share/Share';
 import Settings from './pages/Settings/Settings';
 import AddSite from './pages/AddSite/AddSite';
 import CatOverview from "./pages/Category/CatOverview"
+import Terms from './pages/Additional/Terms';
+import Imprint from './pages/Additional/Imprint';
+import Privacy from './pages/Additional/Privacy';
 
 function App(props: any) {
 
@@ -39,9 +42,9 @@ function App(props: any) {
                   <Route path="/settings" component={Settings}/>
                   <Route path="/addSite" component={AddSite} /> 
                   <Route exact path="/category" component={CatOverview} /> 
-                  <Route exact path="/terms" component={CatOverview} /> 
-                  <Route exact path="/imprint" component={CatOverview} /> 
-                  <Route exact path="/privacy" component={CatOverview} /> 
+                  <Route exact path="/terms" component={Terms} /> 
+                  <Route exact path="/imprint" component={Imprint} /> 
+                  <Route exact path="/privacy" component={Privacy} /> 
                 </Switch>
                 </main>
             </Router>
