@@ -27,7 +27,7 @@ function App(props: any) {
               <div className="row"></div>
               <div className="row"></div>
               <div className="row"></div>
-              <div className="container">
+              <main className="container">
               <Switch>
                   <Route exact path="/" component={Overview}/>
                   <Route path="/site/:id" component={SelectedSite}/>
@@ -39,8 +39,11 @@ function App(props: any) {
                   <Route path="/settings" component={Settings}/>
                   <Route path="/addSite" component={AddSite} /> 
                   <Route exact path="/category" component={CatOverview} /> 
+                  <Route exact path="/terms" component={CatOverview} /> 
+                  <Route exact path="/imprint" component={CatOverview} /> 
+                  <Route exact path="/privacy" component={CatOverview} /> 
                 </Switch>
-                </div>
+                </main>
             </Router>
     
     

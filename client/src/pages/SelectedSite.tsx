@@ -31,15 +31,15 @@ class SelectedSite extends React.Component<any, State> {
         Axios.get<Site>(`${process.env.REACT_APP_API_URL}/exec/like/${this.props.match.params.id}`,{
             headers: { Authorization: `Bearer ${localStorage.getItem("key")}` }
         }).then(res => {this.fetchData()})
-        .catch( err => console.log("(Site.tsx) Error while fetching a Site...", err));
+        .catch( err => console.log("(Site.tsx) Error while fetching a Like...", err));
 
     }
 
     onDislike = () => {
         Axios.get<Site>(`${process.env.REACT_APP_API_URL}/exec/dislike/${this.props.match.params.id}`,{
             headers: { Authorization: `Bearer ${localStorage.getItem("key")}` }
-        })
-        .catch( err => console.log("(Site.tsx) Error while fetching a Site...", err));
+        }).then(res => {this.fetchData()})
+        .catch( err => console.log("(Site.tsx) Error while fetching a Dislike...", err));
         this.fetchData()
     }
 
@@ -53,14 +53,24 @@ class SelectedSite extends React.Component<any, State> {
                         </div>
                         <div className="row">
                             <div className="col s8">
-                                <img width="100%" src={this.state.site.thumbs[0]} alt={"img-"+this.state.site.name}/>
+                                <img className="br-5" width="100%" src={this.state.site.thumbs[0]} alt={"img-"+this.state.site.name}/>
                             </div>
-                            <div className="col s4">
-                                <button className="green btn btn-primary" onClick={this.onLike}>Like</button>
-                                <button className="red btn btn-primary ml-1" onClick={this.onDislike}>Dislike</button>
-                            </div>
-                            <div className="white-text col s6">{this.state.site.rating.like}</div>
+                            <h5 className="white-text">{this.state.site.subname}</h5>
+                            <p className="white-text">{this.state.site.description}</p>
+                            <p className="white-text">{this.state.site.review}</p>
+
                         </div>
+
+
+                        <div className="row">
+                            <div className="col s12">
+                                    <button className="green btn btn-floating" onClick={this.onLike}><i className="material-icons white-text">thumb_up</i></button>
+                                    <button className="red btn btn-floating ml-1" onClick={this.onDislike}><i className="material-icons white-text">thumb_down</i></button>
+                                    <div className="white-text"><h5>Likes: {this.state.site.rating.like}</h5></div>
+                            </div>
+
+                        </div>
+
                     </>
                 }
             </>
