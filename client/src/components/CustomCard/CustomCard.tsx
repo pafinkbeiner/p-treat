@@ -26,7 +26,7 @@ class CustomCard extends React.Component<Props, State> {
                   { this.props.site.description}
                 </div>
     
-                <img className="custom-card-image" src={this.props.site.thumbs[0]} alt=""/>
+                { this.props.site.thumbs && <img className="custom-card-image" src={this.props.site.thumbs[0]} alt=""/>}
     
                 <h3 className="custom-card-title">
                       {this.props.site.name}
