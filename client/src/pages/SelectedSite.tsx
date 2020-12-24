@@ -1,5 +1,6 @@
 import Axios from 'axios';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Slideshow from '../components/Slideshow/Slideshow';
 import {Site} from "../models/Site"
 
@@ -44,6 +45,23 @@ class SelectedSite extends React.Component<any, State> {
         this.fetchData()
     }
 
+    executeRef = () => {
+
+        let url:string = this.state.site?.url || "";
+
+        if( !( url.includes("https://") || url.includes("http://") ) ){
+
+            url = "https://"+url;            
+            window.location.href = url;
+
+        }else{
+
+            window.location.href = url;
+
+        }
+
+    }
+
     render() { 
         return ( 
             <>
@@ -54,17 +72,13 @@ class SelectedSite extends React.Component<any, State> {
                         </div>
                         <div className="row">
                             <div className="col s8">
-                                {/* <a className="carousel-item" href="#one!">  <img src={this.state.site.thumbs[0]}/></a>
-                                <a className="carousel-item" href="#two!">  <img src={this.state.site.thumbs[0]}/></a>
-                                <a className="carousel-item" href="#three!"><img src={this.state.site.thumbs[0]}/></a>
-                                <a className="carousel-item" href="#four!"><img src={this.state.site.thumbs[0]}/></a>
-                                <a className="carousel-item" href="#five!"><img src={this.state.site.thumbs[0]}/></a> */}
                                 <Slideshow images={this.state.site.thumbs}/>
-                                {/* <img className="br-5" width="100%" src={this.state.site.thumbs[0]} alt={"img-"+this.state.site.name}/> */}
                             </div>
                             <h5 className="white-text">{this.state.site.subname}</h5>
                             <p className="white-text">{this.state.site.description}</p>
                             <p className="white-text">{this.state.site.review}</p>
+                            <button className="btn btn-primary red" onClick={ this.executeRef }>{this.state.site.name}... <i className="material-icons white-text">send</i></button>                          
+                            <p className="white-text">Clicks: {this.state.site.clicks}</p>
 
                         </div>
 
