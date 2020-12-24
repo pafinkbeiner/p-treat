@@ -22,7 +22,7 @@ class CustomCard extends React.Component<Props, State> {
             return (
                 <div className="custom-card">
             
-                <div className="custom-card-description">
+                <div className="custom-card-description white-text">
                   { this.props.site.description}
                 </div>
     

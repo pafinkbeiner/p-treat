@@ -23,7 +23,7 @@ class Footer extends React.Component<Props, State> {
                         <ul>
                             <Link className="white-text" to="/imprint">
                                 <li>
-                                    Impressum
+                                    Imprint
                                 </li>
                             </Link>
 
