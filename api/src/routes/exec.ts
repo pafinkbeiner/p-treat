@@ -6,5 +6,7 @@ const router = express.Router();
 
 router.get("/like/:siteId", InteractController.performLike);
 
+router.get("/dislike/:siteId", InteractController.performDislike);
+
 
 export default router;

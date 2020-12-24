@@ -42,7 +42,6 @@ class SelectedSite extends React.Component<any, State> {
             headers: { Authorization: `Bearer ${localStorage.getItem("key")}` }
         }).then(res => {this.fetchData()})
         .catch( err => console.log("(Site.tsx) Error while fetching a Dislike...", err));
-        this.fetchData()
     }
 
     executeRef = () => {

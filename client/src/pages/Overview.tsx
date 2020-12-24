@@ -54,7 +54,7 @@ class Overview extends React.Component<Props, State> {
                     })}
 
                     <div className="hover-arrow">
-                          <Link to={`/category/${category}`}><h5 className="red-text ml-2">more...</h5>
+                          <Link to={`/category/${category}`}><h5 className="white-text ml-2">more...</h5>
                             {/* <i className="large material-icons white-text">
                               chevron_right
                             </i> */}
@@ -88,7 +88,7 @@ class Overview extends React.Component<Props, State> {
                           })}
                           
                       <div className="hover-arrow">
-                        <Link to={`/category/${category}`}><h5 className="red-text ml-2">more...</h5>
+                        <Link to={`/category/${category}`}><h5 className="white-text ml-2">more...</h5>
                           {/* <i className="large material-icons white-text">
                             chevron_right
                           </i> */}
