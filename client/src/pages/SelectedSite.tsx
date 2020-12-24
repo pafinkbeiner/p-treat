@@ -47,6 +47,8 @@ class SelectedSite extends React.Component<any, State> {
 
     executeRef = () => {
 
+        //TODO Send Axios request and increment site.clicks by 1
+
         let url:string = this.state.site?.url || "";
 
         if( !( url.includes("https://") || url.includes("http://") ) ){
