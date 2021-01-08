@@ -45,7 +45,7 @@ const Navbar = (props:any) => {
       };
 
         return (  
-            <nav>
+            <nav className="navbar">
                 <div className="nav-wrapper">
                     <div className="row">
                         <div className="col"><Link to="/" className="brand-logo center"><img src={Logo} width="auto" height="200px" alt="pTreat Logo"/></Link></div>
@@ -117,12 +117,16 @@ const Navbar = (props:any) => {
                         </div>
 
                     </div>
+
+                    
             
                 </div>
+
+
                 {
                     breatcrums.length > 1 && breatcrums[1] !== "" &&                 
                     <nav>
-                        <div className="nav-wrapper breat">
+                        <div className="nav-wrapper breat transparent bread-container">
                         <div className="col s12">
                             {
                                 breatcrums.map(crum => {

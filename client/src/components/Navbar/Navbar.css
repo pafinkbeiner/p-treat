@@ -1,3 +1,7 @@
+.navbar{
+    margin-bottom: 9rem;
+}
+
 .bottom-row{
     position: fixed;
     width: 90px;
@@ -25,3 +29,10 @@ nav{
     box-shadow: none !important;
     background-color: rgb(14, 14, 14);
 }
+
+.bread-container{
+    position: absolute !important;
+    left: 0px;
+    top: 0px;
+}
+

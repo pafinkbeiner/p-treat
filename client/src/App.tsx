@@ -27,9 +27,6 @@ function App(props: any) {
           
             <Router>
               <Navbar/>
-              <div className="row"></div>
-              <div className="row"></div>
-              <div className="row"></div>
               <main className="container">
               <Switch>
                   <Route exact path="/" component={Overview}/>
