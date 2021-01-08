@@ -3,6 +3,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import {connect} from "react-redux"
 import { setActionButton, setLoading } from "../../redux/actions/frontActions"
 import { useParams } from 'react-router-dom';
+import Logo from "./ptreat.png"
 import "./Navbar.css";
  
 const Navbar = (props:any) => {
@@ -45,9 +46,9 @@ const Navbar = (props:any) => {
 
         return (  
             <nav>
-                <div className="nav-wrapper red">
+                <div className="nav-wrapper">
                     <div className="row">
-                        <div className="col"><Link to="/" className="brand-logo black-text center">pTreat {props.front.loading && <> - LOADING</>}</Link></div>
+                        <div className="col"><Link to="/" className="brand-logo center"><img src={Logo} width="auto" height="200px" alt="pTreat Logo"/></Link></div>
 
                         {
                             props.front.loading && 
@@ -60,7 +61,7 @@ const Navbar = (props:any) => {
                         {
                              localStorage.getItem("key") &&
                             <ul className="right mr-1">
-                                <li onClick={onSubmit}><a><i className="material-icons black-text">exit_to_app</i></a></li> 
+                                <li onClick={onSubmit}><a><i className="material-icons red-text">exit_to_app</i></a></li> 
                             </ul>
                         }
 
