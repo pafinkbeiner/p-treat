@@ -13,7 +13,7 @@ class Share extends React.Component<Props, State> {
         this.state = {  };
     }
     render() { 
-        return ( <>Share</> );
+        return ( <p className="red-text">Soon you are able to share the website!</p> );
     }
 }
  

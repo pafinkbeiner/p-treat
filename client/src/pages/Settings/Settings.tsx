@@ -13,7 +13,7 @@ class Settings extends React.Component<Props, State> {
         this.state = {  };
     }
     render() { 
-        return ( <>Settings</> );
+        return ( <p className="red-text">Settings get added soon!</p> );
     }
 }
  
