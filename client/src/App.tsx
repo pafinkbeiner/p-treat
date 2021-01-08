@@ -18,6 +18,7 @@ import CatOverview from "./pages/Category/CatOverview"
 import Terms from './pages/Additional/Terms';
 import Imprint from './pages/Additional/Imprint';
 import Privacy from './pages/Additional/Privacy';
+import Default from './pages/Default/Default';
 
 function App(props: any) {
 
@@ -42,6 +43,7 @@ function App(props: any) {
                   <Route exact path="/terms" component={Terms} /> 
                   <Route exact path="/imprint" component={Imprint} /> 
                   <Route exact path="/privacy" component={Privacy} /> 
+                  <Route path="/" component={Default}/>
                 </Switch>
                 </main>
                 <Footer/>
