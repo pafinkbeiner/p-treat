@@ -1,0 +1,38 @@
+.navbar{
+    margin-bottom: 9rem;
+}
+
+.bottom-row{
+    position: fixed;
+    width: 90px;
+    bottom: 0px;
+    height: 345px;
+    right: 0px; 
+}
+
+.progress{
+    position: absolute;
+    top: -3px;
+}
+
+.breat{
+    background-color: rgb(14, 14, 14);
+    line-height: 30px;
+    margin-left: 10px;
+}
+
+.breat a{
+    font-size: 1rem;
+}
+
+nav{
+    box-shadow: none !important;
+    background-color: rgb(14, 14, 14);
+}
+
+.bread-container{
+    position: absolute !important;
+    left: 0px;
+    top: 0px;
+}
+
